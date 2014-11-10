@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="surface.cpp" />
+    <ClCompile Include="template.cpp" />
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Edge.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h" />
+    <ClInclude Include="surface.h" />
+    <ClInclude Include="template.h" />
+    <ClInclude Include="Vertex.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Graph">
+      <UniqueIdentifier>{674ff30b-376d-45c8-9cee-6d33be32b2c1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
