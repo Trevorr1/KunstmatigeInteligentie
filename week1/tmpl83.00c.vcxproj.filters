@@ -7,7 +7,10 @@
     <ClCompile Include="Vertex.cpp">
       <Filter>Graph</Filter>
     </ClCompile>
-    <ClCompile Include="Edge.cpp" />
+    <ClCompile Include="Edge.cpp">
+      <Filter>Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -16,7 +19,10 @@
     <ClInclude Include="Vertex.h">
       <Filter>Graph</Filter>
     </ClInclude>
-    <ClInclude Include="Edge.h" />
+    <ClInclude Include="Edge.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">

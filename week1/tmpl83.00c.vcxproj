@@ -115,6 +115,7 @@
   <ItemGroup>
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
     <ClCompile Include="Vertex.cpp" />
@@ -122,6 +123,7 @@
   <ItemGroup>
     <ClInclude Include="Edge.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="Vertex.h" />
