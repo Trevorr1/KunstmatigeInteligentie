@@ -38,5 +38,3 @@ unsigned int Vertex::getID()
 {
 	return m_ID;
 }
-
-

@@ -278,6 +278,8 @@ int main( int argc, char **argv )
 		}
 	}
 	delete game;
+	surface->m_Clearbuffer = false;
+	delete surface;
 	SDL_Quit();
 	return 1;
 }

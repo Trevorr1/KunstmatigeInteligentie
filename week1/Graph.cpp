@@ -39,6 +39,7 @@ void Graph::init()
 		location = new Vertex("Node_" + strID, "Node_" + strID, id);
 		m_Vertices->push_back(location);
 	}
+
 	location = nullptr;
 
 	addEdge(0, 1, 85, "Edge_0");
@@ -59,6 +60,7 @@ void Graph::addEdge(int sourceLocNo, int destLocNo, int duration, string laneId)
 {
 	Edge* edge = new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), duration, laneId);
 	m_Edges->push_back(edge);
+	
 	edge = nullptr;
 }
 

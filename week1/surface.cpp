@@ -64,7 +64,10 @@ void Surface::LoadImage( char* a_File )
 
 Surface::~Surface()
 {
-	FREE64( m_Buffer );
+	if (m_Clearbuffer)
+	{
+		FREE64(m_Buffer);
+	}	
 }
 
 void Surface::Clear( Pixel a_Color )

@@ -101,13 +101,15 @@ public:
 	void Box( int x1, int y1, int x2, int y2, Pixel color );
 	void Bar( int x1, int y1, int x2, int y2, Pixel color );
 	void Resize( int a_Width, int a_Height, Surface* a_Orig );
+	bool m_Clearbuffer = true;
 private:
 	// Attributes
 	Pixel* m_Buffer;	
 	int m_Width, m_Height, m_Pitch;	
 	// Static attributes for the buildin font
 	char s_Font[51][5][5];	
-	int s_Transl[256];		
+	int s_Transl[256];
+	
 };
 
 class Sprite

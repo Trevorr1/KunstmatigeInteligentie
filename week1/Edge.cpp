@@ -18,6 +18,8 @@ Edge::Edge(Vertex* aSource, Vertex* aDestination, unsigned int aWeight, string a
 
 Edge::~Edge()
 {
+	delete m_Source;
+	delete m_Destination;
 }
 
 Vertex* Edge::getSource()

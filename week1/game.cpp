@@ -15,6 +15,7 @@ using namespace Tmpl8;
 Game::~Game()
 {
 	delete m_Graph;
+	//surface memory leaks in template
 	_CrtDumpMemoryLeaks();
 }
 
