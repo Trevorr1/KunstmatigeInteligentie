@@ -10,7 +10,9 @@
     <ClCompile Include="Edge.cpp">
       <Filter>Graph</Filter>
     </ClCompile>
-    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Graph.cpp">
+      <Filter>Graph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -22,7 +24,9 @@
     <ClInclude Include="Edge.h">
       <Filter>Graph</Filter>
     </ClInclude>
-    <ClInclude Include="Graph.h" />
+    <ClInclude Include="Graph.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">

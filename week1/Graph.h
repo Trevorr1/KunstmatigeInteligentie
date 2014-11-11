@@ -1,19 +1,26 @@
 #pragma once
 #include <vector>
 
-class Vertex;
-class Edge;
-class Graph
+namespace Tmpl8
 {
-public:
-	Graph(std::vector<Vertex*>* vertices, std::vector<Edge*>* edges);
-	virtual ~Graph();
+	class Vertex;
+	class Edge;
+	class Graph
+	{
+	public:
+		Graph();
+		virtual ~Graph();
 
-	std::vector<Vertex*>* getVertices();
-	std::vector<Edge*>* getEdges();
+		void init();
 
-private:
-	std::vector<Vertex*>* m_Vertices;
-	std::vector<Edge*>* m_Edges;
-};
+		std::vector<Vertex*>* getVertices();
+		std::vector<Edge*>* getEdges();
+
+	private:
+		void addEdge(int sourceLocNo, int destLocNo, int duration, std::string laneId);
+
+		std::vector<Vertex*>* m_Vertices;
+		std::vector<Edge*>* m_Edges;
+	};
+}
 

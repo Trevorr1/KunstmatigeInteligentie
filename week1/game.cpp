@@ -5,6 +5,8 @@
 #include "template.h"
 #include "game.h"
 
+#include "Graph.h"
+
 using namespace Tmpl8;
 
 #define _CRTDBG_MAP_ALLOC
@@ -12,20 +14,17 @@ using namespace Tmpl8;
 
 Game::~Game()
 {
+	delete m_Graph;
 	_CrtDumpMemoryLeaks();
 }
 
 void Game::Init()
-{	
+{
+	m_Graph = new Graph();
+	m_Graph->init();
 }
 
 void Game::Tick( float a_DT )
 {
 	m_Screen->Clear(0x000000);
-}
-
-void Game::KeyDown(unsigned int code)
-{
-	
-	
 }

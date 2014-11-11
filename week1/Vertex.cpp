@@ -1,12 +1,13 @@
 #include "Vertex.h"
 
+using namespace Tmpl8;
 using namespace std;
 
 Vertex::Vertex()
 {
 }
 
-Vertex::Vertex(string aName, string aDescription, int aID)
+Vertex::Vertex(string aName, string aDescription, unsigned int aID)
 {
 	m_Name = aName;
 	m_Description = aDescription;

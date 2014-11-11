@@ -1,11 +1,13 @@
 #include "Edge.h"
 
+using namespace Tmpl8;
+using namespace std;
 
 Edge::Edge()
 {
 }
 
-Edge::Edge(Vertex* aSource, Vertex* aDestination, unsigned int aWeight, unsigned int aID)
+Edge::Edge(Vertex* aSource, Vertex* aDestination, unsigned int aWeight, string aID)
 {
 	m_Source = aSource;
 	m_Destination = aDestination;
@@ -33,7 +35,7 @@ unsigned int Edge::getWeight()
 	return m_Weight;
 }
 
-unsigned int Edge::getID()
+string Edge::getID()
 {
 	return m_ID;
 }
