@@ -113,6 +113,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DijkstraSearch.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Graph.cpp" />
@@ -121,6 +122,7 @@
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DijkstraSearch.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Graph.h" />
