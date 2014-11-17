@@ -44,7 +44,7 @@ void DijkstraSearch::findMinimalDistances(Vertex* node)
 		if (getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) 
 		{
 			m_Distance.insert(std::pair<Vertex*, int>(target, getShortestDistance(node) + getDistance(node, target))); //this might be wrong, try building trev
-			m_Predecessors.insert(target, node);
+			m_Predecessors.insert(std::pair<Vertex*,Vertex*>(target, node));
 			m_UnsettledNodes.insert(target);
 		}
 	}
