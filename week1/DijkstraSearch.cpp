@@ -59,6 +59,8 @@ int DijkstraSearch::getDistance(Vertex* node, Vertex* target)
 			return edge->getWeight();
 		}
 	}
+
+	return -1;
 	//maybe throw exception here??
 }
 
@@ -100,7 +102,7 @@ int DijkstraSearch::getShortestDistance(Vertex* destination)
 
 vector<Vertex*>* DijkstraSearch::GetPath(Vertex* target)
 {
-	vector<Vertex*>* path;
+	vector<Vertex*>* path = nullptr;
 	Vertex* step = target;
 	if (m_Predecessors.at(step) == nullptr)
 	{
