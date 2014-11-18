@@ -98,26 +98,24 @@ int DijkstraSearch::getShortestDistance(Vertex* destination)
 		return d;
 }
 
-//@@@@@@@@@@@@@@@@@@@@@@ Trevorr
-//TRANSLATE ME TO C++
-/////////////////////////////////
-//public LinkedList<Vertex> getPath(Vertex target) {
-//
-//	LinkedList<Vertex> path = new LinkedList<Vertex>();
-//	Vertex step = target;
-//	// check if a path exists
-//	if (predecessors.get(step) == null) { //m_Predessors
-//		return null;
-//	}
-//	path.add(step);
-//	while (predecessors.get(step) != null) { //m_Predessors
-//		step = predecessors.get(step);
-//		path.add(step);
-//	}
-//	// Put it into the correct order
-//	Collections.reverse(path);
-//	return path;
-//}
+vector<Vertex*>* DijkstraSearch::GetPath(Vertex* target)
+{
+	vector<Vertex*>* path;
+	Vertex* step = target;
+	if (m_Predecessors.at(step) == nullptr)
+	{
+		return nullptr;
+	}
+	path->push_back(step);
+	while (m_Predecessors.at(step) != nullptr)
+	{
+		step = m_Predecessors.at(step);
+		path->push_back(step);
+	}
+
+	std::reverse(path->begin(), path->end());
+	return path;
+}
 
 bool DijkstraSearch::isSettled(Vertex* vertex)
 {

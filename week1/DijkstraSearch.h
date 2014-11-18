@@ -16,6 +16,7 @@ namespace Tmpl8
 		virtual ~DijkstraSearch();
 
 		void Execute(Vertex* source);
+		vector<Vertex*>* DijkstraSearch::GetPath(Vertex* target);
 
 	private:
 		std::vector<Vertex*>* m_Vertices;
