@@ -6,6 +6,8 @@
 #include "game.h"
 
 #include "Graph.h"
+#include "DijkstraSearch.h"
+#include <vector>
 
 using namespace Tmpl8;
 
@@ -15,6 +17,7 @@ using namespace Tmpl8;
 Game::~Game()
 {
 	delete m_Graph;
+	delete m_DS;
 	//surface memory leaks in template
 	_CrtDumpMemoryLeaks();
 }
@@ -23,6 +26,13 @@ void Game::Init()
 {
 	m_Graph = new Graph();
 	m_Graph->init();
+
+	m_DS = new DijkstraSearch(m_Graph);
+	m_DS->Execute(m_Graph->getVertices()->at(0));
+	std::vector<Vertex*>* path = m_DS->GetPath(m_Graph->getVertices()->at(10));
+
+	int wait = 0;
+
 }
 
 void Game::Tick( float a_DT )

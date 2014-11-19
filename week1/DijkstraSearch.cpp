@@ -23,16 +23,19 @@ DijkstraSearch::~DijkstraSearch()
 
 void DijkstraSearch::Execute(Vertex* source)
 {
-	m_Distance.insert(std::pair<Vertex*,int>(source, 0)); //this might be wrong, try building trev
+	m_Distance.insert(std::pair<Vertex*, int>(source, 0));
 	m_UnsettledNodes.insert(source);
-
 	set<Vertex*>::iterator it;
+
 	while (m_UnsettledNodes.size() > 0)
 	{
 		Vertex* node = getMinimum(m_UnsettledNodes);
 		m_SettledNodes.insert(node);
-		m_UnsettledNodes.insert(node);
+		//it = m_SettledNodes.find(node);
+		m_UnsettledNodes.erase(node);
 		findMinimalDistances(node);
+
+		printf("unsettlednode size: %d\n", m_UnsettledNodes.size());
 	}
 }
 
@@ -93,11 +96,18 @@ Vertex* DijkstraSearch::getMinimum(set<Vertex*> vertices)
 
 int DijkstraSearch::getShortestDistance(Vertex* destination)
 {
-	int d = m_Distance.at(destination);
-	if (d == NULL)
-		return INT_MAX;
+	std::map<Vertex*, int>::iterator it = m_Distance.find(destination);
+	if (it != m_Distance.end())
+	{
+		return m_Distance.at(destination); //vang af
+
+		/*if (d == NULL)
+			return INT_MAX;
+		else
+			return d;*/
+	}
 	else
-		return d;
+		return INT_MAX;
 }
 
 vector<Vertex*>* DijkstraSearch::GetPath(Vertex* target)
@@ -121,8 +131,10 @@ vector<Vertex*>* DijkstraSearch::GetPath(Vertex* target)
 
 bool DijkstraSearch::isSettled(Vertex* vertex)
 {
-	set<Vertex*>::iterator it = m_SettledNodes.find(vertex);
-	if (*it != nullptr)
+	set<Vertex*>::iterator it;
+	it = m_SettledNodes.find(vertex);
+
+	if (it != m_SettledNodes.end())
 		return true;
 	else
 		return false;

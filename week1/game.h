@@ -5,6 +5,7 @@ namespace Tmpl8 {
 class Surface;
 class Sprite;
 class Graph;
+class DijkstraSearch;
 class Game
 {
 public:
@@ -20,6 +21,7 @@ public:
 private:
 	Surface* m_Screen;
 	Graph* m_Graph;
+	DijkstraSearch* m_DS;
 };
 
 }; // namespace Tmpl8
