@@ -7,12 +7,11 @@ Edge::Edge()
 {
 }
 
-Edge::Edge(Vertex* aSource, Vertex* aDestination, unsigned int aWeight, string aID)
+Edge::Edge(Vertex* aSource, Vertex* aDestination, unsigned int aWeight)
 {
 	m_Source = aSource;
 	m_Destination = aDestination;
 	m_Weight = aWeight;
-	m_ID = aID;
 }
 
 
@@ -35,9 +34,4 @@ Vertex* Edge::getDestination()
 unsigned int Edge::getWeight()
 {
 	return m_Weight;
-}
-
-string Edge::getID()
-{
-	return m_ID;
 }

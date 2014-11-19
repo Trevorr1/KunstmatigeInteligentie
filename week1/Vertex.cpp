@@ -7,11 +7,10 @@ Vertex::Vertex()
 {
 }
 
-Vertex::Vertex(string aName, string aDescription, unsigned int aID)
+Vertex::Vertex(string aName, string aDescription)
 {
 	m_Name = aName;
 	m_Description = aDescription;
-	m_ID = aID;
 }
 
 
@@ -27,14 +26,4 @@ string Vertex::getName()
 string Vertex::getDescription()
 {
 	return m_Description;
-}
-
-void Vertex::setDescription(string aDescription)
-{
-	m_Description = aDescription;
-}
-
-unsigned int Vertex::getID()
-{
-	return m_ID;
 }

@@ -17,7 +17,7 @@ namespace Tmpl8
 		std::vector<Edge*>* getEdges();
 
 	private:
-		void addEdge(int sourceLocNo, int destLocNo, int duration, std::string laneId);
+		void addEdge(int sourceLocNo, int destLocNo, int duration);
 
 		std::vector<Vertex*>* m_Vertices;
 		std::vector<Edge*>* m_Edges;
