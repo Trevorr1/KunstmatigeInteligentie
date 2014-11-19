@@ -1,11 +1,8 @@
 #include "Edge.h"
+#include "Vertex.h"
 
 using namespace Tmpl8;
 using namespace std;
-
-Edge::Edge()
-{
-}
 
 Edge::Edge(Vertex* aSource, Vertex* aDestination, unsigned int aWeight)
 {

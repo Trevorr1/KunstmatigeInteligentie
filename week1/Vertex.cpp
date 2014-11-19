@@ -1,16 +1,14 @@
 #include "Vertex.h"
+#include "template.h"
 
 using namespace Tmpl8;
 using namespace std;
 
-Vertex::Vertex()
-{
-}
-
-Vertex::Vertex(string aName, string aDescription)
+Vertex::Vertex(string aName, string aDescription, vector3 aPosition)
 {
 	m_Name = aName;
 	m_Description = aDescription;
+	m_Position = aPosition;
 }
 
 
@@ -26,4 +24,9 @@ string Vertex::getName()
 string Vertex::getDescription()
 {
 	return m_Description;
+}
+
+vector3 Vertex::getPosition()
+{
+	return m_Position;
 }
