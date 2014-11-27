@@ -4,10 +4,10 @@
 using namespace Tmpl8;
 using namespace std;
 
-Vertex::Vertex(string aName, string aDescription, vector3 aPosition)
+Vertex::Vertex(string aName, int aId, vector3 aPosition)
 {
 	m_Name = aName;
-	m_Description = aDescription;
+	m_Id = aId;
 	m_Position = aPosition;
 }
 
@@ -21,12 +21,12 @@ string Vertex::getName()
 	return m_Name;
 }
 
-string Vertex::getDescription()
-{
-	return m_Description;
-}
-
 vector3 Vertex::getPosition()
 {
 	return m_Position;
+}
+
+short Vertex::getId()
+{
+	return m_Id;
 }

@@ -6,7 +6,7 @@ namespace Tmpl8
 	class Edge
 	{
 	public:
-		Edge(Vertex* aSource, Vertex* aDestination, unsigned int aWeight);
+		Edge(Vertex* aSource, Vertex* aDestination, int sId, int dId, unsigned int aWeight);
 		virtual ~Edge();
 
 		Vertex* getSource();
@@ -17,6 +17,8 @@ namespace Tmpl8
 		Vertex* m_Source;
 		Vertex* m_Destination;
 		unsigned int m_Weight;
+		int m_SourceId;
+		int m_DestinationId;
 	};
 }
 

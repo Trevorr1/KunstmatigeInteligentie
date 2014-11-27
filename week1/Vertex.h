@@ -9,16 +9,16 @@ namespace Tmpl8
 	class Vertex
 	{
 	public:
-		Vertex(std::string aName, std::string aDescription, vector3 aPosition);
+		Vertex(std::string aName, int aId, vector3 aPosition);
 		virtual ~Vertex();
 
 		std::string getName();
-		std::string getDescription();
 		vector3 getPosition();
+		short getId();
 	private:
 		std::string m_Name;
-		std::string m_Description;
 		vector3 m_Position;
+		int m_Id;
 	};
 }
 
