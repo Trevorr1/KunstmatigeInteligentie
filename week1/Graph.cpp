@@ -95,11 +95,11 @@ void Graph::init()
 
 	ComputePath(0, m_AdjacencyMap, m_MinimumDistance, m_Previous);
 
-	for (std::map<int, std::list<Neighbour>>::iterator vertex_iter = m_AdjacencyMap.begin(); vertex_iter != m_AdjacencyMap.end(); vertex_iter++)
+	/*for (std::map<int, std::list<Neighbour>>::iterator vertex_iter = m_AdjacencyMap.begin(); vertex_iter != m_AdjacencyMap.end(); vertex_iter++)
 	{
 		int v = vertex_iter->first;
 		std::cout << "Distance to " << vertex_names[v] << ": " << m_MinimumDistance[v] << std::endl;
-		std::list<int> path = GetShortestPathTo(v, m_Previous);
+		std::list<int> path = GetShortestPathTo(0, v, m_Previous);
 		std::list<int>::iterator path_iter = path.begin();
 		std::cout << "Path: ";
 		for (; path_iter != path.end(); path_iter++)
@@ -107,13 +107,13 @@ void Graph::init()
 			std::cout << vertex_names[*path_iter] << " ";
 		}
 		std::cout << std::endl;
-	}
+	}*/
 
-	/*std::cout << "Distance from 0 to 4: " << m_MinimumDistance[4] << std::endl;
-	std::list<int> path = GetShortestPathTo(4, m_Previous);
+	std::cout << "Distance from 0 to 4: " << m_MinimumDistance[4] << std::endl;
+	std::list<int> path = GetShortestPathTo(0, 4, m_Previous);
 	std::cout << "Path : ";
 	std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
-	std::cout << std::endl;*/
+	std::cout << std::endl;
 }
 
 void Graph::Draw()
@@ -167,7 +167,7 @@ void Graph::ComputePath(int source, std::map<int, std::list<Neighbour>>& adjacen
 			if (minDistance[v] == 0)
 			{
 				minDistance[v] = distance_through_u;
-				//previous[v] = u;
+				previous[v] = u;
 				vertex_queue.insert(std::pair<int, int>(distance_through_u, v));
 			}
 			
@@ -186,16 +186,19 @@ void Graph::ComputePath(int source, std::map<int, std::list<Neighbour>>& adjacen
 	}
 }
 
-std::list<int> Graph::GetShortestPathTo(int target, std::map<int, int>& previous)
+std::list<int> Graph::GetShortestPathTo(int source, int target, std::map<int, int>& previous)
 {
 	std::list<int> path;
 	std::map<int, int>::iterator prev;
 	int vertex = target;
 	path.push_front(vertex);
+
 	while ((prev = previous.find(vertex)) != previous.end())
 	{
 		vertex = prev->second;
 		path.push_front(vertex);
+		if (vertex == source)
+			break;
 	}
 	return path;
 }
