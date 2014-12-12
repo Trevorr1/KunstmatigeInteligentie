@@ -38,7 +38,7 @@ namespace Tmpl8
 
 		//dijkstra stuff
 		void ComputePath(int source, std::map<int, std::list<Neighbour>>& adjacencyMap, std::map<int, int>& minDistance, std::map<int, int>& previous);
-		std::list<int> GetShortestPathTo(int target, std::map<int, int>& previous);
+		std::list<int> GetShortestPathTo(int source, int target, std::map<int, int>& previous);
 
 		//A* stuff
 		void ComputeAStarPath(Vertex* source);

@@ -186,7 +186,7 @@ void Graph::ComputePath(int source, std::map<int, std::list<Neighbour>>& adjacen
 	}
 }
 
-std::list<int> Graph::GetShortestPathTo(int target, std::map<int, int>& previous)
+std::list<int> Graph::GetShortestPathTo(int source, int target, std::map<int, int>& previous)
 {
 	std::list<int> path;
 	std::map<int, int>::iterator prev;
