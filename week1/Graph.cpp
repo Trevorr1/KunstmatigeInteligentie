@@ -69,7 +69,7 @@ void Graph::init()
 	vertex_names.push_back("Philadelphia");
 	vertex_names.push_back("Binghamton");  
 	vertex_names.push_back("Allentown");   
-	vertex_names.push_back("New York");    
+	vertex_names.push_back("New York"); 
 	m_AdjacencyMap[0].push_back(Neighbour(1, 79));
 	m_AdjacencyMap[0].push_back(Neighbour(5, 81));
 
@@ -110,7 +110,7 @@ void Graph::init()
 	}*/
 
 	std::cout << "Distance from 0 to 4: " << m_MinimumDistance[4] << std::endl;
-	std::list<int> path = GetShortestPathTo(0, 4, m_Previous);
+	std::list<int> path = GetShortestPathTo(0, 6, m_Previous);
 	std::cout << "Path : ";
 	std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
 	std::cout << std::endl;
