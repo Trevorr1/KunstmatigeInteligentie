@@ -70,6 +70,13 @@ void Graph::init()
 	m_OpenList = new vector<Vertex*>();
 	m_ClosedList = new vector<Vertex*>();
 
+	list<Vertex*> path = ComputeAStarPath(m_Vertices->at(0), m_Vertices->at(6));
+
+	for (Vertex* v : path)
+	{
+		printf("Path %d", v->getId());
+	}
+
 	/*std::vector<std::string> vertex_names;
 
 	vertex_names.push_back("Harrisburg");  
@@ -133,10 +140,16 @@ void Graph::Draw()
 			m_Edges->at(i)->getDestination()->getPosition().x + 12, m_Edges->at(i)->getDestination()->getPosition().y + 12, 0x0000ff);
 	}
 
+	//char * writable = new char[str.size() + 1]
+
 	for (int i = 0; i < m_Vertices->size(); i++)
 	{
 		m_Target->Bar(m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y,
 			m_Vertices->at(i)->getPosition().x + 25, m_Vertices->at(i)->getPosition().y + 25, 0xff0000);
+
+		char buffer[32];
+		char* c = itoa(m_Vertices->at(i)->getId(), buffer, 10);
+		m_Target->Print(c, m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y, 0xffffff);
 	}
 }
 
@@ -299,13 +312,13 @@ list<Vertex*> Graph::ComputeAStarPath(Vertex* source, Vertex* target)
 
 void Graph::addEdge(short sourceLocNo, short destLocNo, int duration) 
 {
-	//Edge* edge = new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration);
-	//m_Edges->push_back(edge);
+	Edge* edge = new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration);
+	m_Edges->push_back(edge);
 
 	m_Vertices->at(sourceLocNo)->getEgdes()->push_back(new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration));
 	//location[0]->getEgdes()->push_back(new Edge(m_Vertices->at()
 	
-	//edge = nullptr;
+	edge = nullptr;
 }
 
 vector<Vertex*>* Graph::getVertices()

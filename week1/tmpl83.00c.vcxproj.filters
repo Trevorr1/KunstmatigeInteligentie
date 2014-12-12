@@ -10,36 +10,9 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Graph</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphEdge.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphNode.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="surface.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="template.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="SparseGraph.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph_SearchAStar.cpp">
-      <Filter>Searches</Filter>
-    </ClCompile>
-    <ClCompile Include="Heuristic.cpp">
-      <Filter>Heurisitcs</Filter>
-    </ClCompile>
-    <ClCompile Include="Heuristic_Euclid.cpp">
-      <Filter>Heurisitcs</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph_SearchDFS.cpp">
-      <Filter>Searches</Filter>
-    </ClCompile>
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="surface.cpp" />
+    <ClCompile Include="template.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -51,56 +24,14 @@
     <ClInclude Include="Graph.h">
       <Filter>Graph</Filter>
     </ClInclude>
-    <ClInclude Include="template.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="surface.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphNode.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphEdge.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="SparseGraph.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Graph_SearchAStar.h">
-      <Filter>Searches</Filter>
-    </ClInclude>
-    <ClInclude Include="Heuristic.h">
-      <Filter>Heurisitcs</Filter>
-    </ClInclude>
-    <ClInclude Include="Heuristic_Euclid.h">
-      <Filter>Heurisitcs</Filter>
-    </ClInclude>
-    <ClInclude Include="NavGraphNode.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph_SearchDFS.h">
-      <Filter>Searches</Filter>
-    </ClInclude>
+    <ClInclude Include="surface.h" />
+    <ClInclude Include="template.h" />
+    <ClInclude Include="game.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">
       <UniqueIdentifier>{674ff30b-376d-45c8-9cee-6d33be32b2c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source">
-      <UniqueIdentifier>{e9171ef3-d8f5-41b8-86a0-de444eab7121}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header">
-      <UniqueIdentifier>{ef139fa8-b9c7-4a25-9dcf-22864a570543}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Searches">
-      <UniqueIdentifier>{9a1b0550-ee89-4829-b790-ab63a429f1b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Heurisitcs">
-      <UniqueIdentifier>{ac80dfbd-44b9-4eba-b4fa-98c33b98250f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
