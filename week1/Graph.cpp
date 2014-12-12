@@ -99,7 +99,7 @@ void Graph::init()
 	{
 		int v = vertex_iter->first;
 		std::cout << "Distance to " << vertex_names[v] << ": " << m_MinimumDistance[v] << std::endl;
-		std::list<int> path = GetShortestPathTo(v, m_Previous);
+		std::list<int> path = GetShortestPathTo(0, v, m_Previous);
 		std::list<int>::iterator path_iter = path.begin();
 		std::cout << "Path: ";
 		for (; path_iter != path.end(); path_iter++)
