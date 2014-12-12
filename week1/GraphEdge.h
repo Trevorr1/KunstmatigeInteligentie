@@ -36,5 +36,11 @@ public:
 
 	double Cost()const { return m_dCost; }
 	void SetCost(double NewCost) { m_dCost = NewCost; }
+
+	void Remove() 
+	{ 
+		m_iFrom = invalid_node_index;
+		m_iTo = invalid_node_index;
+	}
 };
 

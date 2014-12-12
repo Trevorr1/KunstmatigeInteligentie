@@ -30,3 +30,8 @@ short Vertex::getId()
 {
 	return m_Id;
 }
+
+vector<Edge*>* Vertex::getEgdes()
+{
+	return m_Edges;
+}

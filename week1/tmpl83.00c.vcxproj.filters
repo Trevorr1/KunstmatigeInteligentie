@@ -25,9 +25,6 @@
     <ClCompile Include="template.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Graph_SearchDFS.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="SparseGraph.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -39,6 +36,9 @@
     </ClCompile>
     <ClCompile Include="Heuristic_Euclid.cpp">
       <Filter>Heurisitcs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph_SearchDFS.cpp">
+      <Filter>Searches</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,9 +69,6 @@
     <ClInclude Include="SparseGraph.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Graph_SearchDFS.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Graph_SearchAStar.h">
       <Filter>Searches</Filter>
@@ -84,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="NavGraphNode.h">
       <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph_SearchDFS.h">
+      <Filter>Searches</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

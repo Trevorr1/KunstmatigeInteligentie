@@ -5,6 +5,8 @@
 #include "template.h"
 #include "game.h"
 
+#include "SparseGraph.h"
+
 #include "Graph.h"
 #include <vector>
 
@@ -24,6 +26,7 @@ void Game::Init()
 {
 	m_Graph = new Graph(m_Screen);
 	m_Graph->init();
+
 }
 
 void Game::Tick( float a_DT )

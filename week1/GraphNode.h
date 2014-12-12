@@ -12,5 +12,6 @@ public:
 
 	int Index()const { return m_iIndex; }
 	void SetIndex(int NewIndex) { m_iIndex = NewIndex; }
+	void Remove() { m_iIndex = invalid_node_index; }
 };
 
