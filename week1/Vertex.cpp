@@ -11,7 +11,6 @@ Vertex::Vertex(string aName, int aId, vector3 aPosition)
 	m_Position = aPosition;
 }
 
-
 Vertex::~Vertex()
 {
 }
