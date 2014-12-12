@@ -6,9 +6,15 @@
 
 #include <queue>
 #include <iostream>
+#include <limits>
 
 using namespace Tmpl8;
 using namespace std;
+
+bool sortByGuessedTotalDistance(Vertex *lhs, Vertex *rhs) 
+{ //todo: give this method a proper position in the code
+	return lhs->m_GuessedTotalDistance < rhs->m_GuessedTotalDistance;
+}
 
 Graph::Graph(Surface* aTarget)
 {
@@ -61,7 +67,10 @@ void Graph::init()
 	addEdge(6, 7, 224);
 	addEdge(7, 8, 167);
 
-	std::vector<std::string> vertex_names;
+	m_OpenList = new vector<Vertex*>();
+	m_ClosedList = new vector<Vertex*>();
+
+	/*std::vector<std::string> vertex_names;
 
 	vertex_names.push_back("Harrisburg");  
 	vertex_names.push_back("Baltimore");   
@@ -93,7 +102,7 @@ void Graph::init()
 	m_AdjacencyMap[6].push_back(Neighbour(3, 96));
 	m_AdjacencyMap[6].push_back(Neighbour(5, 91));
 
-	ComputePath(0, m_AdjacencyMap, m_MinimumDistance, m_Previous);
+	ComputePath(0, m_AdjacencyMap, m_MinimumDistance, m_Previous);*/
 
 	/*for (std::map<int, std::list<Neighbour>>::iterator vertex_iter = m_AdjacencyMap.begin(); vertex_iter != m_AdjacencyMap.end(); vertex_iter++)
 	{
@@ -109,11 +118,11 @@ void Graph::init()
 		std::cout << std::endl;
 	}*/
 
-	std::cout << "Distance from 0 to 4: " << m_MinimumDistance[4] << std::endl;
+	/*std::cout << "Distance from 0 to 4: " << m_MinimumDistance[4] << std::endl;
 	std::list<int> path = GetShortestPathTo(0, 6, m_Previous);
 	std::cout << "Path : ";
 	std::copy(path.begin(), path.end(), std::ostream_iterator<int>(std::cout, " "));
-	std::cout << std::endl;
+	std::cout << std::endl;*/
 }
 
 void Graph::Draw()
@@ -203,16 +212,100 @@ std::list<int> Graph::GetShortestPathTo(int source, int target, std::map<int, in
 	return path;
 }
 
-void Graph::ComputeAStarPath(Vertex* source)
+list<Vertex*> Graph::ComputeAStarPath(Vertex* source, Vertex* target)
 {
+	if (source == target)
+		throw std::invalid_argument("Source cannot be the same as target!");
+
+	list<Vertex*> path;
+
+	for (Vertex* v : *m_Vertices)
+	{
+		v->m_VisitedBy = nullptr;
+		v->m_MinDistance = 2147483647;
+		v->m_GuessedTotalDistance = 0;
+	}
+
+	source->m_MinDistance = 0;
+	m_OpenList->push_back(source);
+
+	//good stuff incoming
+	while (!m_OpenList->empty())
+	{
+		Vertex* vertex = m_OpenList->front();
+		m_OpenList->erase(m_OpenList->begin());
+
+		//calculate guessed distance
+		float guessedDistance;
+
+		if (vertex == target)
+			guessedDistance = 0.0f;
+		else
+		{
+			int sourceX = (int)vertex->getPosition().x;
+			int sourceY = (int)vertex->getPosition().y;
+			int targetX = (int)target->getPosition().x;
+			int targetY = (int)target->getPosition().y;
+
+			if (sourceY == targetY)
+				guessedDistance = abs(sourceX - targetX);
+			else if (sourceX == targetX)
+				guessedDistance = abs(sourceY - targetY);
+			else
+			{
+				int a = pow((float)(sourceX - targetX), 2);
+				int b = pow((float)(sourceY - targetY), 2);
+				guessedDistance = abs(sqrt(a + b));
+			}
+		}
+
+		for (Edge* edge : *vertex->getEgdes())
+		{
+			Vertex* target = edge->getDestination();
+
+
+			if (std::find(m_ClosedList->begin(), m_ClosedList->end(), target) == m_ClosedList->end())
+			{
+				int distance = edge->getDistance();
+
+				int totalDistance = vertex->m_MinDistance + distance;
+				if ((totalDistance) < target->m_MinDistance)
+				{
+					target->m_MinDistance = totalDistance;
+					target->m_GuessedTotalDistance = totalDistance + guessedDistance;
+					target->m_VisitedBy = vertex;
+					m_OpenList->push_back(target);
+				}
+			}
+		}
+
+		m_ClosedList->push_back(vertex);
+
+		std::sort(m_OpenList->begin(), m_OpenList->end(), sortByGuessedTotalDistance);
+	}
+
+	Vertex* current = target;
+
+	while (current != nullptr && current != source)
+	{
+		path.push_front(current);
+		current = current->m_VisitedBy;
+	}
+
+	m_ClosedList->clear();
+
+	return path;
 }
 
 void Graph::addEdge(short sourceLocNo, short destLocNo, int duration) 
 {
-	Edge* edge = new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration);
-	m_Edges->push_back(edge);
+	//Edge* edge = new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration);
+	//m_Edges->push_back(edge);
+
+	m_Vertices->at(sourceLocNo)->getEgdes()->push_back(new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration));
+	//location[0]->getEgdes()->push_back(new Edge(m_Vertices->at()
 	
-	edge = nullptr;
+	//edge = nullptr;
 }
 
 vector<Vertex*>* Graph::getVertices()

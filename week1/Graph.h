@@ -3,6 +3,7 @@
 #include <map>
 #include <list>
 #include <set>
+#include <queue>
 
 namespace Tmpl8
 {
@@ -41,7 +42,8 @@ namespace Tmpl8
 		std::list<int> GetShortestPathTo(int source, int target, std::map<int, int>& previous);
 
 		//A* stuff
-		void ComputeAStarPath(Vertex* source);
+		//std::list<Vertex*> getPath()
+		std::list<Vertex*> ComputeAStarPath(Vertex* source, Vertex* target);
 
 		std::vector<Vertex*>* getVertices();
 		std::vector<Edge*>* getEdges();
@@ -58,6 +60,10 @@ namespace Tmpl8
 		std::map<int, std::list<Neighbour>> m_AdjacencyMap;
 		std::map<int, int> m_MinimumDistance;
 		std::map<int, int> m_Previous;
+
+		//A* stuff
+		std::vector<Vertex*>* m_OpenList;
+		std::vector<Vertex*>* m_ClosedList;
 	};
 }
 

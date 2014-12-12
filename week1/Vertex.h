@@ -18,7 +18,7 @@ namespace Tmpl8
 		vector3 getPosition();
 		short getId();
 
-		vector<Edge*>* getEgdes();
+		std::vector<Edge*>* getEgdes();
 
 		Vertex* m_VisitedBy = nullptr;
 		int m_MinDistance;
@@ -28,7 +28,7 @@ namespace Tmpl8
 		std::string m_Name;
 		vector3 m_Position;
 		int m_Id;
-		vector<Edge*>* m_Edges;
+		std::vector<Edge*>* m_Edges;
 	};
 }
 
