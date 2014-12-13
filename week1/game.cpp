@@ -26,7 +26,6 @@ void Game::Init()
 {
 	m_Graph = new Graph(m_Screen);
 	m_Graph->init();
-
 }
 
 void Game::Tick( float a_DT )

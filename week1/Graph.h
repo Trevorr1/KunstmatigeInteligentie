@@ -28,6 +28,8 @@ namespace Tmpl8
 	class Surface;
 	class Vertex;
 	class Edge;
+	class Cow;
+	class Rabbit;
 	class Graph
 	{
 	public:
@@ -42,11 +44,12 @@ namespace Tmpl8
 		std::list<int> GetShortestPathTo(int source, int target, std::map<int, int>& previous);
 
 		//A* stuff
-		//std::list<Vertex*> getPath()
 		std::list<Vertex*> ComputeAStarPath(Vertex* source, Vertex* target);
 
 		std::vector<Vertex*>* getVertices();
 		std::vector<Edge*>* getEdges();
+
+		Surface* getSurface();
 
 	private:
 		void addEdge(short sourceLocNo, short destLocNo, int duration);
@@ -55,6 +58,9 @@ namespace Tmpl8
 
 		std::vector<Vertex*>* m_Vertices;
 		std::vector<Edge*>* m_Edges;
+
+		Cow* m_Cow;
+		Rabbit* m_Rabbit;
 
 		//dijkstra stuff
 		std::map<int, std::list<Neighbour>> m_AdjacencyMap;

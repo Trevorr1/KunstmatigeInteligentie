@@ -113,17 +113,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cow.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cow.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="Rabbit.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />

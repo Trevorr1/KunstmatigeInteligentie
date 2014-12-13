@@ -1,6 +1,8 @@
 #include "Graph.h"
 #include "Vertex.h"
 #include "Edge.h"
+#include "Cow.h"
+#include "Rabbit.h"
 #include "surface.h"
 #include "template.h"
 
@@ -32,10 +34,22 @@ Graph::~Graph()
 	m_Vertices->erase(m_Vertices->begin(), m_Vertices->end());
 
 	delete m_Vertices;
+
+	m_OpenList->erase(m_OpenList->begin(), m_OpenList->end());
+	delete m_OpenList;
+
+	m_ClosedList->erase(m_ClosedList->begin(), m_ClosedList->end());
+	delete m_ClosedList;
+
+	delete m_Cow;
+	delete m_Rabbit;
 }
 
 void Graph::init()
 {
+	m_Cow = new Cow(this);
+	m_Rabbit = new Rabbit(this);
+
 	Vertex* location[9] = { nullptr };
 
 	location[0] = new Vertex("V0", 0, vector3(50.0f, 240.0f, 0.0f));
@@ -74,7 +88,7 @@ void Graph::init()
 
 	for (Vertex* v : path)
 	{
-		printf("Path %d", v->getId());
+		printf("Path %d ", v->getId());
 	}
 
 	/*std::vector<std::string> vertex_names;
@@ -134,14 +148,6 @@ void Graph::init()
 
 void Graph::Draw()
 {
-	for (int i = 0; i < m_Edges->size(); i++)
-	{
-		m_Target->Line(m_Edges->at(i)->getSource()->getPosition().x + 12, m_Edges->at(i)->getSource()->getPosition().y + 12,
-			m_Edges->at(i)->getDestination()->getPosition().x + 12, m_Edges->at(i)->getDestination()->getPosition().y + 12, 0x0000ff);
-	}
-
-	//char * writable = new char[str.size() + 1]
-
 	for (int i = 0; i < m_Vertices->size(); i++)
 	{
 		m_Target->Bar(m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y,
@@ -151,6 +157,34 @@ void Graph::Draw()
 		char* c = itoa(m_Vertices->at(i)->getId(), buffer, 10);
 		m_Target->Print(c, m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y, 0xffffff);
 	}
+
+	for (int i = 0; i < m_Edges->size(); i++)
+	{
+		m_Target->Line(m_Edges->at(i)->getSource()->getPosition().x + 12, m_Edges->at(i)->getSource()->getPosition().y + 12,
+			m_Edges->at(i)->getDestination()->getPosition().x + 12, m_Edges->at(i)->getDestination()->getPosition().y + 12, 0x0000ff);
+
+		char buffer[32];
+		char* c = itoa(m_Edges->at(i)->getDistance(), buffer, 10);
+
+		//vector3 vsource = m_Edges->at(i)->getSource()->getPosition();
+		//vector3 vdest = m_Edges->at(i)->getDestination()->getPosition();
+		//vector3 line = vsource - vdest;
+		//int mx = max(vsource.x, vdest.x);
+		//int my = max(vsource.y, vdest.y);
+		//int nx = min(vsource.x, vdest.x);
+		//int ny = min(vsource.y, vdest.y);
+
+		////int x = vsource.x + abs(line.x);
+		////int y = vsource.y + abs(line.y);
+
+		//int x = mx - nx;
+		//int y = my - ny;
+
+		//m_Target->Print(c, x/2, y/2, 0xffff00);
+	}
+
+	m_Cow->update();
+	m_Rabbit->update();
 }
 
 void Graph::ComputePath(int source, std::map<int, std::list<Neighbour>>& adjacencyMap, std::map<int, int>& minDistance, std::map<int, int>& previous)
@@ -315,9 +349,8 @@ void Graph::addEdge(short sourceLocNo, short destLocNo, int duration)
 	Edge* edge = new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration);
 	m_Edges->push_back(edge);
 
-	m_Vertices->at(sourceLocNo)->getEgdes()->push_back(new Edge(m_Vertices->at(sourceLocNo), m_Vertices->at(destLocNo), sourceLocNo, destLocNo, duration));
-	//location[0]->getEgdes()->push_back(new Edge(m_Vertices->at()
-	
+	m_Vertices->at(sourceLocNo)->getEgdes()->push_back(edge);
+
 	edge = nullptr;
 }
 
@@ -329,4 +362,9 @@ vector<Vertex*>* Graph::getVertices()
 vector <Edge*>* Graph::getEdges()
 {
 	return m_Edges;
+}
+
+Surface* Graph::getSurface()
+{
+	return m_Target;
 }

@@ -13,6 +13,8 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
+    <ClCompile Include="Cow.cpp" />
+    <ClCompile Include="Rabbit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -28,6 +30,8 @@
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Cow.h" />
+    <ClInclude Include="Rabbit.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">
