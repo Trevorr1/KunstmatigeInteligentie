@@ -14,6 +14,8 @@ namespace Tmpl8
 		Vertex(std::string aName, int aId, vector3 aPosition);
 		virtual ~Vertex();
 
+		//void addGameObject()
+
 		std::string getName();
 		vector3 getPosition();
 		short getId();

@@ -13,8 +13,12 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
-    <ClCompile Include="Cow.cpp" />
-    <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="Cow.cpp">
+      <Filter>Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Rabbit.cpp">
+      <Filter>Graph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -30,9 +34,16 @@
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="game.h" />
-    <ClInclude Include="Cow.h" />
-    <ClInclude Include="Rabbit.h" />
     <ClInclude Include="eGameEntity.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameEntity.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Cow.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Rabbit.h">
       <Filter>Graph</Filter>
     </ClInclude>
   </ItemGroup>

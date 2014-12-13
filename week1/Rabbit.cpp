@@ -16,7 +16,17 @@ Rabbit::~Rabbit()
 	delete m_Sprite;
 }
 
-void Rabbit::update()
+void Rabbit::Update()
 {
 	m_Sprite->Draw(150, 100, m_Graph->getSurface());
+}
+
+void Rabbit::setRoute(eGameEntity source, eGameEntity target)
+{
+
+}
+
+void entityMovedNotification(eGameEntity entity)
+{
+
 }

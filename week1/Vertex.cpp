@@ -19,6 +19,11 @@ Vertex::~Vertex()
 {
 }
 
+//void Vertex::addGameObject(IGameEntity* gameObject)
+//{
+//	m_GameEntities->push_back(gameObject);
+//}
+
 string Vertex::getName()
 {
 	return m_Name;

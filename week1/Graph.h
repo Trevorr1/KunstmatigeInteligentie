@@ -2,8 +2,7 @@
 #include <vector>
 #include <map>
 #include <list>
-#include <set>
-#include <queue>
+#include "eGameEntity.h"
 
 namespace Tmpl8
 {
@@ -28,6 +27,8 @@ namespace Tmpl8
 		std::vector<Edge*>* getEdges();
 
 		Surface* getSurface();
+
+		std::map<eGameEntity, Vertex*> m_LookUpBook;
 
 	private:
 		void addEdge(short sourceLocNo, short destLocNo, int duration);
