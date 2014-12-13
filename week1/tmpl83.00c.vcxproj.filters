@@ -32,6 +32,9 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="Cow.h" />
     <ClInclude Include="Rabbit.h" />
+    <ClInclude Include="eGameEntity.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">

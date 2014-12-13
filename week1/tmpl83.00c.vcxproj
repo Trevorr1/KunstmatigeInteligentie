@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClInclude Include="Cow.h" />
     <ClInclude Include="Edge.h" />
+    <ClInclude Include="eGameEntity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Rabbit.h" />
