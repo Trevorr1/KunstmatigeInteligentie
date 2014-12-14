@@ -1,23 +1,25 @@
 #pragma once
 
 #include "template.h"
+#include "IGameEntity.h"
 
 namespace Tmpl8
 {
 	class Graph;
 	class Surface;
 	class Sprite;
-	class Cow
+	class Cow : public IGameEntity
 	{
 	public:
 		Cow(Graph* graph);
 		virtual ~Cow();
 
-		void update();
+		void Draw();
+		void Update(float dt);
+		void setRoute(eGameEntity source, eGameEntity target);
+		void entityMovedNotification(eGameEntity entity);
 
 	private:
-		Sprite* m_Sprite;
-		Graph* m_Graph;
 	};
 } //tmpl8
 

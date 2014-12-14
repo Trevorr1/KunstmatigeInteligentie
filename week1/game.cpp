@@ -31,5 +31,5 @@ void Game::Init()
 void Game::Tick( float a_DT )
 {
 	m_Screen->Clear(0x000000);
-	m_Graph->Draw();
+	m_Graph->Update(a_DT);
 }

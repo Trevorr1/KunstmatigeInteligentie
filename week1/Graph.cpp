@@ -67,6 +67,10 @@ void Graph::init()
 		m_Vertices->push_back(location[i]);
 	}
 
+	location[0]->addGameObject(m_Cow);
+	m_LookUpBook.insert({ eCow, location[0] });
+	location[6]->addGameObject(m_Rabbit);
+
 	addEdge(0, 1, 85);
 	addEdge(0, 2, 217);
 	addEdge(1, 3, 173);
@@ -84,53 +88,66 @@ void Graph::init()
 	m_OpenList = new vector<Vertex*>();
 	m_ClosedList = new vector<Vertex*>();
 
-	list<Vertex*> path = ComputeAStarPath(m_Vertices->at(0), m_Vertices->at(6));
+	//list<Vertex*> path = ComputeAStarPath(m_Vertices->at(0), m_Vertices->at(6));
 
-	for (Vertex* v : path)
+	/*for (Vertex* v : path)
 	{
 		printf("Path %d ", v->getId());
-	}
+	}*/
 }
 
-void Graph::Draw()
+//void Graph::Draw()
+//{
+//	for (int i = 0; i < m_Vertices->size(); i++)
+//	{
+//		m_Target->Bar(m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y,
+//			m_Vertices->at(i)->getPosition().x + 25, m_Vertices->at(i)->getPosition().y + 25, 0xff0000);
+//
+//		char buffer[32];
+//		char* c = itoa(m_Vertices->at(i)->getId(), buffer, 10);
+//		m_Target->Print(c, m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y, 0xffffff);
+//	}
+//
+//	for (int i = 0; i < m_Edges->size(); i++)
+//	{
+//		m_Target->Line(m_Edges->at(i)->getSource()->getPosition().x + 12, m_Edges->at(i)->getSource()->getPosition().y + 12,
+//			m_Edges->at(i)->getDestination()->getPosition().x + 12, m_Edges->at(i)->getDestination()->getPosition().y + 12, 0x0000ff);
+//
+//		char buffer[32];
+//		char* c = itoa(m_Edges->at(i)->getDistance(), buffer, 10);
+//
+//		//vector3 vsource = m_Edges->at(i)->getSource()->getPosition();
+//		//vector3 vdest = m_Edges->at(i)->getDestination()->getPosition();
+//		//vector3 line = vsource - vdest;
+//		//int mx = max(vsource.x, vdest.x);
+//		//int my = max(vsource.y, vdest.y);
+//		//int nx = min(vsource.x, vdest.x);
+//		//int ny = min(vsource.y, vdest.y);
+//
+//		////int x = vsource.x + abs(line.x);
+//		////int y = vsource.y + abs(line.y);
+//
+//		//int x = mx - nx;
+//		//int y = my - ny;
+//
+//		//m_Target->Print(c, x/2, y/2, 0xffff00);
+//	}
+//
+//	
+//}
+
+void Graph::Update(float dt)
 {
-	for (int i = 0; i < m_Vertices->size(); i++)
+	m_LookUpBook.at(eCow)->getGameObject(eCow)->Update(dt);
+
+	for (auto& keyvalue : m_LookUpBook)
 	{
-		m_Target->Bar(m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y,
-			m_Vertices->at(i)->getPosition().x + 25, m_Vertices->at(i)->getPosition().y + 25, 0xff0000);
-
-		char buffer[32];
-		char* c = itoa(m_Vertices->at(i)->getId(), buffer, 10);
-		m_Target->Print(c, m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y, 0xffffff);
+		if (keyvalue.first != eCow)
+		{
+			IGameEntity* ent = keyvalue.second->getGameObject(keyvalue.first);
+			ent->Update(dt);
+		}
 	}
-
-	for (int i = 0; i < m_Edges->size(); i++)
-	{
-		m_Target->Line(m_Edges->at(i)->getSource()->getPosition().x + 12, m_Edges->at(i)->getSource()->getPosition().y + 12,
-			m_Edges->at(i)->getDestination()->getPosition().x + 12, m_Edges->at(i)->getDestination()->getPosition().y + 12, 0x0000ff);
-
-		char buffer[32];
-		char* c = itoa(m_Edges->at(i)->getDistance(), buffer, 10);
-
-		//vector3 vsource = m_Edges->at(i)->getSource()->getPosition();
-		//vector3 vdest = m_Edges->at(i)->getDestination()->getPosition();
-		//vector3 line = vsource - vdest;
-		//int mx = max(vsource.x, vdest.x);
-		//int my = max(vsource.y, vdest.y);
-		//int nx = min(vsource.x, vdest.x);
-		//int ny = min(vsource.y, vdest.y);
-
-		////int x = vsource.x + abs(line.x);
-		////int y = vsource.y + abs(line.y);
-
-		//int x = mx - nx;
-		//int y = my - ny;
-
-		//m_Target->Print(c, x/2, y/2, 0xffff00);
-	}
-
-	m_Cow->update();
-	m_Rabbit->update();
 }
 
 list<Vertex*> Graph::ComputeAStarPath(Vertex* source, Vertex* target)
@@ -216,6 +233,52 @@ list<Vertex*> Graph::ComputeAStarPath(Vertex* source, Vertex* target)
 	m_ClosedList->clear();
 
 	return path;
+}
+
+list<Vertex*> Graph::getPath(eGameEntity source, eGameEntity target)
+{
+	Vertex* vsrc = m_LookUpBook.at(source);
+	Vertex* vtrgt = m_LookUpBook.at(target);
+
+	return ComputeAStarPath(vsrc, vtrgt);
+}
+
+void Graph::ShuffleAllExcept(eGameEntity exception)
+{
+	Vertex* exceptionVertex = m_LookUpBook.at(exception);
+
+	std::map<eGameEntity, Vertex*>::iterator it = m_LookUpBook.begin();
+
+	for (; it != m_LookUpBook.end(); it++)
+	{
+		if (it->first == exception)
+			continue;
+
+		Vertex* newVertex;
+		do
+		{
+			int result = rand() % (m_Vertices->size());
+			newVertex = m_Vertices->at(result);
+		} while (newVertex == exceptionVertex);
+
+		m_LookUpBook[it->first] = newVertex;
+
+		moveGameObject(newVertex, it->first);
+	}
+}
+
+void Graph::moveGameObject(Vertex* target, eGameEntity entity)
+{
+	IGameEntity* target_entity = m_LookUpBook.at(entity)->takeGameObject(entity);
+	target->addGameObject(target_entity);
+	m_LookUpBook[entity] = target;
+
+	// notify entities
+	for (auto &vertex : m_LookUpBook)
+	{
+		if (vertex.first != entity) 
+			vertex.second->getGameObject(vertex.first)->entityMovedNotification(entity);
+	}
 }
 
 void Graph::addEdge(short sourceLocNo, short destLocNo, int duration) 

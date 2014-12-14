@@ -1,20 +1,28 @@
 #pragma once
 
+#include "template.h"
 #include <string>
 #include <vector>
-#include "Edge.h"
-#include "template.h"
+#include "IGameEntity.h"
 
 namespace Tmpl8
 {
-	class vector3;
-	class Vertex
+	class Edge;
+	class Vertex : public IGameEntity
 	{
 	public:
 		Vertex(std::string aName, int aId, vector3 aPosition);
 		virtual ~Vertex();
 
-		//void addGameObject()
+		//inherited
+		void Draw();
+		void Update(float dt);
+		void addGameObject(IGameEntity* obj);
+		void setRoute(eGameEntity source, eGameEntity target) {}
+		//end
+
+		IGameEntity* getGameObject(eGameEntity entity);
+		IGameEntity* takeGameObject(eGameEntity entity);
 
 		std::string getName();
 		vector3 getPosition();
@@ -31,6 +39,7 @@ namespace Tmpl8
 		vector3 m_Position;
 		int m_Id;
 		std::vector<Edge*>* m_Edges;
+		std::vector<IGameEntity*>* m_GameEntities;
 	};
 }
 

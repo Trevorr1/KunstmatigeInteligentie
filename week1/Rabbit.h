@@ -14,15 +14,12 @@ namespace Tmpl8
 		Rabbit(Graph* graph);
 		virtual ~Rabbit();
 
-		void Update();
-
+		void Draw();
+		void Update(float dt);
 		void setRoute(eGameEntity source, eGameEntity target);
-
 		void entityMovedNotification(eGameEntity entity);
 
 	private:
-		Sprite* m_Sprite;
-		Graph* m_Graph;
 	};
 } //tmpl8
 
