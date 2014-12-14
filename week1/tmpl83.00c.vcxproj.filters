@@ -19,6 +19,9 @@
     <ClCompile Include="Rabbit.cpp">
       <Filter>Graph</Filter>
     </ClCompile>
+    <ClCompile Include="DrawManager.cpp">
+      <Filter>Graph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -44,6 +47,9 @@
       <Filter>Graph</Filter>
     </ClInclude>
     <ClInclude Include="Rabbit.h">
+      <Filter>Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawManager.h">
       <Filter>Graph</Filter>
     </ClInclude>
   </ItemGroup>

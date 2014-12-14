@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cow.cpp" />
+    <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Graph.cpp" />
@@ -124,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cow.h" />
+    <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="eGameEntity.h" />
     <ClInclude Include="game.h" />

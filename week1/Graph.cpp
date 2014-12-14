@@ -96,45 +96,13 @@ void Graph::init()
 	}*/
 }
 
-//void Graph::Draw()
-//{
-//	for (int i = 0; i < m_Vertices->size(); i++)
-//	{
-//		m_Target->Bar(m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y,
-//			m_Vertices->at(i)->getPosition().x + 25, m_Vertices->at(i)->getPosition().y + 25, 0xff0000);
-//
-//		char buffer[32];
-//		char* c = itoa(m_Vertices->at(i)->getId(), buffer, 10);
-//		m_Target->Print(c, m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y, 0xffffff);
-//	}
-//
-//	for (int i = 0; i < m_Edges->size(); i++)
-//	{
-//		m_Target->Line(m_Edges->at(i)->getSource()->getPosition().x + 12, m_Edges->at(i)->getSource()->getPosition().y + 12,
-//			m_Edges->at(i)->getDestination()->getPosition().x + 12, m_Edges->at(i)->getDestination()->getPosition().y + 12, 0x0000ff);
-//
-//		char buffer[32];
-//		char* c = itoa(m_Edges->at(i)->getDistance(), buffer, 10);
-//
-//		//vector3 vsource = m_Edges->at(i)->getSource()->getPosition();
-//		//vector3 vdest = m_Edges->at(i)->getDestination()->getPosition();
-//		//vector3 line = vsource - vdest;
-//		//int mx = max(vsource.x, vdest.x);
-//		//int my = max(vsource.y, vdest.y);
-//		//int nx = min(vsource.x, vdest.x);
-//		//int ny = min(vsource.y, vdest.y);
-//
-//		////int x = vsource.x + abs(line.x);
-//		////int y = vsource.y + abs(line.y);
-//
-//		//int x = mx - nx;
-//		//int y = my - ny;
-//
-//		//m_Target->Print(c, x/2, y/2, 0xffff00);
-//	}
-//
-//	
-//}
+void Graph::Draw(Surface* target)
+{
+	for (auto* v : *m_Vertices)
+	{
+		v->Draw();
+	}
+}
 
 void Graph::Update(float dt)
 {

@@ -5,8 +5,7 @@
 #include "template.h"
 #include "game.h"
 
-//#include "SparseGraph.h"
-
+#include "DrawManager.h"
 #include "Graph.h"
 #include <vector>
 
@@ -24,6 +23,7 @@ Game::~Game()
 
 void Game::Init()
 {
+	DrawManager::getInstance().setTargetSurface(m_Screen);
 	m_Graph = new Graph(m_Screen);
 	m_Graph->init();
 }
@@ -32,4 +32,5 @@ void Game::Tick( float a_DT )
 {
 	m_Screen->Clear(0x000000);
 	m_Graph->Update(a_DT);
+	m_Graph->Draw(m_Screen);
 }

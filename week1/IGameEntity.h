@@ -1,5 +1,6 @@
 #pragma once
 
+#include "template.h"
 #include "eGameEntity.h"
 #include "surface.h"
 #include <list>
@@ -20,6 +21,8 @@ namespace Tmpl8
 		virtual ~IGameEntity() {};
 
 		Graph* getGraph() { return m_Graph; }
+		vector3 getPosition() { return m_Position; }
+		void setPosition(int x, int y){ m_Position.x += x, m_Position.y += y; }
 
 		virtual void entityMovedNotification(eGameEntity entity) {};
 	protected:
@@ -27,6 +30,7 @@ namespace Tmpl8
 		std::list<Vertex*> m_Path;
 		Graph* m_Graph;
 		Sprite* m_Sprite;
+		vector3 m_Position;
 	};
 }
 

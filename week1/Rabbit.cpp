@@ -18,7 +18,7 @@ Rabbit::~Rabbit()
 
 void Rabbit::Draw()
 {
-	//m_Sprite->Draw(150, 100, m_Graph->getSurface());
+	m_Sprite->Draw(m_Position.x, m_Position.y, m_Graph->getSurface());
 }
 
 void Rabbit::Update(float dt)

@@ -18,7 +18,7 @@ Cow::~Cow()
 
 void Cow::Draw()
 {
-	//m_Sprite->Draw(50, 100, m_Graph->getSurface());
+	m_Sprite->Draw(m_Position.x, m_Position.y, m_Graph->getSurface());
 }
 
 void Cow::Update(float dt)

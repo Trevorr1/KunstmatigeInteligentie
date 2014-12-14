@@ -1,6 +1,7 @@
 #include "Vertex.h"
 #include "Edge.h"
 #include "template.h"
+#include "DrawManager.h"
 
 using namespace Tmpl8;
 using namespace std;
@@ -30,36 +31,36 @@ Vertex::~Vertex()
 void Vertex::Draw()
 {
 	//get target surface from passed param or singleton
-	//m_Target->Bar(m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y,
-	//	//			m_Vertices->at(i)->getPosition().x + 25, m_Vertices->at(i)->getPosition().y + 25, 0xff0000);
-	//	//
-	//	//		char buffer[32];
-	//	//		char* c = itoa(m_Vertices->at(i)->getId(), buffer, 10);
-	//	//		m_Target->Print(c, m_Vertices->at(i)->getPosition().x, m_Vertices->at(i)->getPosition().y, 0xffffff);
+	Surface* surface = DrawManager::getInstance().getScreen();
+
+	surface->Bar(m_Position.x, m_Position.y, m_Position.x + 25, m_Position.y + 25, 0xff0000);
+
+	char buffer[32];
+	char* c = itoa(m_Id, buffer, 10);
+	surface->Print(c, m_Position.x, m_Position.y, 0xffffff);
 
 	////Draw images next to eachother:
-	//int entityCount = m_GameEntities->size();
-	//int imageWidth = 32;
-	//int totalSize = entityCount * imageWidth;
-	//int currentCount = 0;
-	//for (IGameEntity* entity : *m_GameEntities)
-	//{
-	//	int addToXPosition = (entityCount > 1) ? (currentCount * imageWidth) - (totalSize / 2) + (imageWidth / 2) : 0;
-	//	entity->SetOffset(this->mX + addToXPosition, this->mY);
-	//	entity->
-	//	entity->Draw();
-	//	currentCount++;
-	//}
+	int entityCount = m_GameEntities->size();
+	int imageWidth = 32;
+	int totalSize = entityCount * imageWidth;
+	int currentCount = 0;
+	for (IGameEntity* entity : *m_GameEntities)
+	{
+		int addToXPosition = (entityCount > 1) ? (currentCount * imageWidth) - (totalSize / 2) + (imageWidth / 2) : 0;
+		entity->setPosition(addToXPosition, 0);
+		entity->Draw();
+		currentCount++;
+	}
 
-	//mApplication->SetColor(Color(0, 0, 0, 255));
-	//for (Edge* edge : *m_Edges){
-	//	Vertex* target = edge->getDestination();
-	//	mApplication->DrawLine(mX, mY, target->mX, target->mY);
-	//	int x = mX / 2 + target->mX / 2;
-	//	int y = mY / 2 + target->mY / 2;
-	//	mApplication->DrawText(std::to_string(edge->getDistance()), x, y);
-	//}
-	//mApplication->SetColor(Color(255, 255, 255, 255));
+	for (Edge* edge : *m_Edges)
+	{
+		Vertex* target = edge->getDestination();
+		surface->Line(m_Position.x, m_Position.y, target->getPosition().x, target->getPosition().y, 0x0000ff);
+		int x = m_Position.x / 2 + target->getPosition().x / 2;
+		int y = m_Position.y / 2 + target->getPosition().y / 2;
+		char* c = itoa(edge->getDistance(), buffer, 10);
+		surface->Print(c, x, y, 0xffffff);
+	}
 }
 
 void Vertex::Update(float dt)
