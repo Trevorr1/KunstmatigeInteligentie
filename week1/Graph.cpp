@@ -23,6 +23,7 @@ Graph::Graph(Surface* aTarget)
 	m_Vertices = new vector<Vertex*>();
 	m_Edges = new vector<Edge*>();
 	m_Target = aTarget;
+	m_Path = list<Vertex*>();
 }
 
 Graph::~Graph()
@@ -40,6 +41,9 @@ Graph::~Graph()
 
 	m_ClosedList->erase(m_ClosedList->begin(), m_ClosedList->end());
 	delete m_ClosedList;
+
+	//m_Path->erase(m_Path->begin(), m_Path->end());
+	//delete m_Path;
 
 	delete m_Cow;
 	delete m_Rabbit;
@@ -69,6 +73,7 @@ void Graph::init()
 
 	location[0]->addGameObject(m_Cow);
 	m_LookUpBook.insert({ eCow, location[0] });
+	m_LookUpBook.insert({ eRabbit, location[6] });
 	location[6]->addGameObject(m_Rabbit);
 
 	addEdge(0, 1, 85);
@@ -88,12 +93,7 @@ void Graph::init()
 	m_OpenList = new vector<Vertex*>();
 	m_ClosedList = new vector<Vertex*>();
 
-	//list<Vertex*> path = ComputeAStarPath(m_Vertices->at(0), m_Vertices->at(6));
-
-	/*for (Vertex* v : path)
-	{
-		printf("Path %d ", v->getId());
-	}*/
+	m_Path = getPath(eCow, eRabbit);
 }
 
 void Graph::Draw(Surface* target)
@@ -106,6 +106,8 @@ void Graph::Draw(Surface* target)
 
 void Graph::Update(float dt)
 {
+	m_LookUpBook.at(eCow)->getGameObject(eCow)->setRoute(eCow, eRabbit);
+
 	m_LookUpBook.at(eCow)->getGameObject(eCow)->Update(dt);
 
 	for (auto& keyvalue : m_LookUpBook)
@@ -121,7 +123,7 @@ void Graph::Update(float dt)
 list<Vertex*> Graph::ComputeAStarPath(Vertex* source, Vertex* target)
 {
 	if (source == target)
-		throw std::invalid_argument("Source cannot be the same as target!");
+		throw std::invalid_argument("Vertex source cannot be the same as  vertex target!");
 
 	list<Vertex*> path;
 

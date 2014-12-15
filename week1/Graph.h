@@ -49,6 +49,7 @@ namespace Tmpl8
 		//A* stuff
 		std::vector<Vertex*>* m_OpenList;
 		std::vector<Vertex*>* m_ClosedList;
+		std::list<Vertex*> m_Path;
 	};
 }
 

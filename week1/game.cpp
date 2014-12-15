@@ -4,7 +4,6 @@
 #include "stdlib.h"
 #include "template.h"
 #include "game.h"
-
 #include "DrawManager.h"
 #include "Graph.h"
 #include <vector>
@@ -18,7 +17,7 @@ Game::~Game()
 {
 	delete m_Graph;
 	//surface memory leaks in template
-	_CrtDumpMemoryLeaks();
+	//_CrtDumpMemoryLeaks();
 }
 
 void Game::Init()
@@ -31,6 +30,13 @@ void Game::Init()
 void Game::Tick( float a_DT )
 {
 	m_Screen->Clear(0x000000);
-	m_Graph->Update(a_DT);
+	//m_Graph->Update(a_DT);
 	m_Graph->Draw(m_Screen);
+}
+
+void Game::KeyDown(unsigned int code)
+{
+	if (code == 44) //space bar
+		//step graph and astar
+		m_Graph->Update(0.0f);
 }

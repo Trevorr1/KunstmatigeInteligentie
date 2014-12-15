@@ -48,7 +48,6 @@ void Vertex::Draw()
 	{
 		int addToXPosition = (entityCount > 1) ? (currentCount * imageWidth) - (totalSize / 2) + (imageWidth / 2) : 0;
 		entity->setPosition(m_Position.x + 10 + addToXPosition, m_Position.y);
-		//entity->setPosition(50, 250);
 		entity->Draw();
 		currentCount++;
 	}
@@ -104,7 +103,8 @@ IGameEntity* Vertex::takeGameObject(eGameEntity entityEnum)
 	}
 	
 	if (result != nullptr)
-		//delete from list
+		m_GameEntities->erase(m_GameEntities->begin(), m_GameEntities->end());
+		//m_GameEntities->erase(std::remove(m_GameEntities->begin(), m_GameEntities->end(), result), m_GameEntities->end());
 
 	return result;
 }
