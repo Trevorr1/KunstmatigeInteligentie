@@ -22,7 +22,7 @@ namespace Tmpl8
 
 		Graph* getGraph() { return m_Graph; }
 		vector3 getPosition() { return m_Position; }
-		void setPosition(int x, int y){ m_Position.x += x, m_Position.y += y; }
+		void setPosition(int x, int y){ m_Position.x = x, m_Position.y = y; }
 
 		virtual void entityMovedNotification(eGameEntity entity) {};
 	protected:

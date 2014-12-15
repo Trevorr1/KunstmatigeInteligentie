@@ -47,7 +47,8 @@ void Vertex::Draw()
 	for (IGameEntity* entity : *m_GameEntities)
 	{
 		int addToXPosition = (entityCount > 1) ? (currentCount * imageWidth) - (totalSize / 2) + (imageWidth / 2) : 0;
-		entity->setPosition(addToXPosition, 0);
+		entity->setPosition(m_Position.x + 10 + addToXPosition, m_Position.y);
+		//entity->setPosition(50, 250);
 		entity->Draw();
 		currentCount++;
 	}
@@ -55,7 +56,7 @@ void Vertex::Draw()
 	for (Edge* edge : *m_Edges)
 	{
 		Vertex* target = edge->getDestination();
-		surface->Line(m_Position.x, m_Position.y, target->getPosition().x, target->getPosition().y, 0x0000ff);
+		surface->Line(m_Position.x + imageWidth / 2, m_Position.y + imageWidth / 2, target->getPosition().x + imageWidth / 2, target->getPosition().y + imageWidth / 2, 0x0000ff);
 		int x = m_Position.x / 2 + target->getPosition().x / 2;
 		int y = m_Position.y / 2 + target->getPosition().y / 2;
 		char* c = itoa(edge->getDistance(), buffer, 10);
