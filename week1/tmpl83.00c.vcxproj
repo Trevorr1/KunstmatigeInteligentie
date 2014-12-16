@@ -113,25 +113,45 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractStateFactory.cpp" />
     <ClCompile Include="Cow.cpp" />
+    <ClCompile Include="CowState.cpp" />
+    <ClCompile Include="CowStateFactory.cpp" />
+    <ClCompile Include="CowStatePursuit.cpp" />
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameLoopWFour.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="RabbitState.cpp" />
+    <ClCompile Include="RabbitStateFactory.cpp" />
+    <ClCompile Include="EntityState.cpp" />
+    <ClCompile Include="RabbitStateFlee.cpp" />
+    <ClCompile Include="RabbitStateWander.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractStateFactory.h" />
     <ClInclude Include="Cow.h" />
+    <ClInclude Include="CowState.h" />
+    <ClInclude Include="CowStateFactory.h" />
+    <ClInclude Include="CowStatePursuit.h" />
     <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="eGameEntity.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="GameLoopWFour.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="IGameEntity.h" />
     <ClInclude Include="Rabbit.h" />
+    <ClInclude Include="RabbitState.h" />
+    <ClInclude Include="RabbitStateFactory.h" />
+    <ClInclude Include="EntityState.h" />
+    <ClInclude Include="RabbitStateFlee.h" />
+    <ClInclude Include="RabbitStateWander.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />

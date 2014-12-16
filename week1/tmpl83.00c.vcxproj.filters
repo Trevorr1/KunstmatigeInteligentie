@@ -22,6 +22,34 @@
     <ClCompile Include="DrawManager.cpp">
       <Filter>Graph</Filter>
     </ClCompile>
+    <ClCompile Include="AbstractStateFactory.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitState.cpp">
+      <Filter>States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitStateFactory.cpp">
+      <Filter>States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitStateFlee.cpp">
+      <Filter>States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitStateWander.cpp">
+      <Filter>States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="CowState.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateFactory.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStatePursuit.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoopWFour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -52,10 +80,45 @@
     <ClInclude Include="DrawManager.h">
       <Filter>Graph</Filter>
     </ClInclude>
+    <ClInclude Include="AbstractStateFactory.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitState.h">
+      <Filter>States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitStateFactory.h">
+      <Filter>States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitStateFlee.h">
+      <Filter>States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitStateWander.h">
+      <Filter>States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="CowState.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateFactory.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStatePursuit.h" />
+    <ClInclude Include="GameLoopWFour.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">
       <UniqueIdentifier>{674ff30b-376d-45c8-9cee-6d33be32b2c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{d18a5b70-558d-4444-9c0b-16d85fe13eeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Rabbit">
+      <UniqueIdentifier>{7f2a06ab-120e-47a2-85ab-f584d1811fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Cow">
+      <UniqueIdentifier>{a8692484-f372-4ffa-a9a6-c6623605c918}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@ namespace Tmpl8
 	class Graph;
 	class Vertex;
 	class Surface;
+	class EntityState;
 	class IGameEntity
 	{
 	public:
@@ -23,6 +24,8 @@ namespace Tmpl8
 		Graph* getGraph() { return m_Graph; }
 		vector3 getPosition() { return m_Position; }
 		void setPosition(int x, int y){ m_Position.x = x, m_Position.y = y; }
+		void setPosition(vector3 vec){ m_Position = vec; }
+		void setState(EntityState* state) { m_State = state; }
 
 		virtual void entityMovedNotification(eGameEntity entity) {};
 	protected:
@@ -31,6 +34,9 @@ namespace Tmpl8
 		Graph* m_Graph;
 		Sprite* m_Sprite;
 		vector3 m_Position;
+		vector3 m_Heading;
+		float m_Speed;
+		EntityState* m_State;
 	};
 }
 
