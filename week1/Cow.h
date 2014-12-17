@@ -11,15 +11,18 @@ namespace Tmpl8
 	class Cow : public IGameEntity
 	{
 	public:
+		Cow();
 		Cow(Graph* graph);
 		virtual ~Cow();
 
 		void Draw();
 		void Update(float dt);
+		void chase(IGameEntity* entity, float dt);
 		void setRoute(eGameEntity source, eGameEntity target);
 		void entityMovedNotification(eGameEntity entity);
 
 	private:
+
 	};
 } //tmpl8
 

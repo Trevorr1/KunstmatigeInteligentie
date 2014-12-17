@@ -11,6 +11,8 @@ namespace Tmpl8 {
 		void Tick(float dt);
 
 	private:
+		Cow* m_Cow;
+		Rabbit* m_Rabbit;
 		
 	};
 }//namespace Tmpl8
