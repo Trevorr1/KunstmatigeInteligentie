@@ -40,6 +40,7 @@ namespace Tmpl8
 		int m_Id;
 		std::vector<Edge*>* m_Edges;
 		std::vector<IGameEntity*>* m_GameEntities;
+		bool m_Found;
 	};
 }
 

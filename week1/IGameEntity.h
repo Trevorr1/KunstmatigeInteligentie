@@ -20,6 +20,7 @@ namespace Tmpl8
 		virtual void setRoute(eGameEntity source, eGameEntity target) = 0;
 		virtual ~IGameEntity() {};
 
+		std::list<Vertex*> getPath() { return m_Path; }
 		Graph* getGraph() { return m_Graph; }
 		vector3 getPosition() { return m_Position; }
 		void setPosition(int x, int y){ m_Position.x = x, m_Position.y = y; }

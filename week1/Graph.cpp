@@ -9,6 +9,7 @@
 #include <queue>
 #include <iostream>
 #include <limits>
+#include <time.h>
 
 using namespace Tmpl8;
 using namespace std;
@@ -23,7 +24,7 @@ Graph::Graph(Surface* aTarget)
 	m_Vertices = new vector<Vertex*>();
 	m_Edges = new vector<Edge*>();
 	m_Target = aTarget;
-	m_Path = list<Vertex*>();
+	srand(time(NULL));
 }
 
 Graph::~Graph()
@@ -54,46 +55,52 @@ void Graph::init()
 	m_Cow = new Cow(this);
 	m_Rabbit = new Rabbit(this);
 
-	Vertex* location[9] = { nullptr };
+	Vertex* location[10] = { nullptr };
 
-	location[0] = new Vertex("V0", 0, vector3(50.0f, 240.0f, 0.0f));
-	location[1] = new Vertex("V1", 1, vector3(100.0f, 140.0f, 0.0f));
-	location[2] = new Vertex("V2", 2, vector3(110.0f, 340.0f, 0.0f));
-	location[3] = new Vertex("V3", 3, vector3(200.0f, 240.0f, 0.0f));
-	location[4] = new Vertex("V4", 4, vector3(300.0f, 340.0f, 0.0f));
-	location[5] = new Vertex("V5", 5, vector3(350.0f, 140.0f, 0.0f));
-	location[6] = new Vertex("V6", 6, vector3(350.0f, 240.0f, 0.0f));
-	location[7] = new Vertex("V7", 7, vector3(450.0f, 330.0f, 0.0f));
-	location[8] = new Vertex("V8", 8, vector3(500.0f, 220.0f, 0.0f));
+	location[0] = new Vertex("V0", 0, vector3(20.0f, 100.0f, 0.0f));
+	location[1] = new Vertex("V1", 1, vector3(70.0f, 50.0f, 0.0f));
+	location[2] = new Vertex("V2", 2, vector3(30.0f, 210.0f, 0.0f));
+	location[3] = new Vertex("V3", 3, vector3(150.0f, 90.0f, 0.0f));
+	location[4] = new Vertex("V4", 4, vector3(100.0f, 290.0f, 0.0f));
+	location[5] = new Vertex("V5", 5, vector3(200.0f, 30.0f, 0.0f));
+	location[6] = new Vertex("V6", 6, vector3(230.0f, 150.0f, 0.0f));
+	location[7] = new Vertex("V7", 7, vector3(250.0f, 330.0f, 0.0f));
+	location[8] = new Vertex("V8", 8, vector3(350.0f, 110.0f, 0.0f));
+	location[9] = new Vertex("V9", 9, vector3(370.0f, 210.0f, 0.0f));
 
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		m_Vertices->push_back(location[i]);
 	}
 
 	location[0]->addGameObject(m_Cow);
 	m_LookUpBook.insert({ eCow, location[0] });
-	m_LookUpBook.insert({ eRabbit, location[6] });
-	location[6]->addGameObject(m_Rabbit);
+	
+	location[9]->addGameObject(m_Rabbit);
+	m_LookUpBook.insert({ eRabbit, location[9] });
 
-	addEdge(0, 1, 85);
-	addEdge(0, 2, 217);
-	addEdge(1, 3, 173);
-	addEdge(1, 5, 186);
-	addEdge(2, 3, 103);
-	addEdge(2, 4, 183);
-	addEdge(3, 6, 250);
-	addEdge(4, 6, 150);
-	addEdge(4, 7, 100);
-	addEdge(5, 6, 84);
-	addEdge(5, 8, 502);
-	addEdge(6, 7, 224);
-	addEdge(7, 8, 167);
+	addEdge(0, 1, 85*100);
+	addEdge(0, 2, 217*100);
+	addEdge(1, 3, 173*100);
+	addEdge(1, 5, 186*100);
+	addEdge(2, 3, 103*100);
+	addEdge(2, 4, 183*100);
+	addEdge(3, 6, 250*100);
+	addEdge(4, 6, 150*100);
+	addEdge(4, 7, 100*100);
+	addEdge(5, 6, 84*100);
+	addEdge(5, 8, 502*100);
+	addEdge(6, 7, 224*100);
+	addEdge(7, 8, 167*100);
+	addEdge(6, 9, 40 * 100);
+	addEdge(7, 9, 79 * 100);
+	addEdge(8, 9, 12 * 100);
+	addEdge(6, 8, 15 * 100);
 
 	m_OpenList = new vector<Vertex*>();
 	m_ClosedList = new vector<Vertex*>();
 
-	m_Path = getPath(eCow, eRabbit);
+	m_LookUpBook.at(eCow)->getGameObject(eCow)->setRoute(eCow, eRabbit);
 }
 
 void Graph::Draw(Surface* target)
@@ -106,7 +113,11 @@ void Graph::Draw(Surface* target)
 
 void Graph::Update(float dt)
 {
-	m_LookUpBook.at(eCow)->getGameObject(eCow)->setRoute(eCow, eRabbit);
+	if (m_LookUpBook.at(eCow)->getGameObject(eCow)->getPath().size() ==  0)
+	{
+		ShuffleHare();
+		m_LookUpBook.at(eCow)->getGameObject(eCow)->setRoute(eCow, eRabbit);
+	}
 
 	m_LookUpBook.at(eCow)->getGameObject(eCow)->Update(dt);
 
@@ -122,8 +133,8 @@ void Graph::Update(float dt)
 
 list<Vertex*> Graph::ComputeAStarPath(Vertex* source, Vertex* target)
 {
-	if (source == target)
-		throw std::invalid_argument("Vertex source cannot be the same as  vertex target!");
+	/*if (source == target)
+		throw std::invalid_argument("Vertex source cannot be the same as  vertex target!");*/
 
 	list<Vertex*> path;
 
@@ -213,28 +224,24 @@ list<Vertex*> Graph::getPath(eGameEntity source, eGameEntity target)
 	return ComputeAStarPath(vsrc, vtrgt);
 }
 
-void Graph::ShuffleAllExcept(eGameEntity exception)
+void Graph::ShuffleHare()
 {
-	Vertex* exceptionVertex = m_LookUpBook.at(exception);
+	Vertex* vHare = m_LookUpBook.at(eRabbit);
+	Vertex* vCow = m_LookUpBook.at(eCow);
 
-	std::map<eGameEntity, Vertex*>::iterator it = m_LookUpBook.begin();
+	std::map<eGameEntity, Vertex*>::iterator it = m_LookUpBook.find(eRabbit);
+	//std::map<eGameEntity, Vertex*>::iterator itCow = m_LookUpBook.find(eCow);
 
-	for (; it != m_LookUpBook.end(); it++)
+	Vertex* newVertex;
+	
+	do
 	{
-		if (it->first == exception)
-			continue;
-
-		Vertex* newVertex;
-		do
-		{
-			int result = rand() % (m_Vertices->size());
-			newVertex = m_Vertices->at(result);
-		} while (newVertex == exceptionVertex);
-
-		m_LookUpBook[it->first] = newVertex;
-
-		moveGameObject(newVertex, it->first);
-	}
+		int result = rand() % (m_Vertices->size());
+		newVertex = m_Vertices->at(result);
+	} while (newVertex->getId() == vCow->getId() || newVertex->getId() == vHare->getId());
+	
+	moveGameObject(newVertex, it->first);
+	m_LookUpBook[it->first] = newVertex;
 }
 
 void Graph::moveGameObject(Vertex* target, eGameEntity entity)

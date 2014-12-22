@@ -3,8 +3,9 @@
 #include "template.h"
 #include "DrawManager.h"
 
-using namespace Tmpl8;
 using namespace std;
+using namespace Tmpl8;
+
 
 Vertex::Vertex(string aName, int aId, vector3 aPosition)
 {
@@ -16,6 +17,8 @@ Vertex::Vertex(string aName, int aId, vector3 aPosition)
 	m_GameEntities = new vector<IGameEntity*>();
 	m_MinDistance = 0;
 	m_GuessedTotalDistance = 0;
+
+	m_Found = false;
 }
 
 Vertex::~Vertex()
@@ -39,7 +42,7 @@ void Vertex::Draw()
 	char* c = itoa(m_Id, buffer, 10);
 	surface->Print(c, m_Position.x, m_Position.y, 0xffffff);
 
-	////Draw images next to eachother:
+	//bas en gijs stuff
 	int entityCount = m_GameEntities->size();
 	int imageWidth = 32;
 	int totalSize = entityCount * imageWidth;
@@ -50,6 +53,14 @@ void Vertex::Draw()
 		entity->setPosition(m_Position.x + 10 + addToXPosition, m_Position.y);
 		entity->Draw();
 		currentCount++;
+
+		if (entity->getEnum() == eCow)
+		{
+			if (entity->getPath().size() == 0)
+				m_Found = true;
+			else
+				m_Found = false;
+		}
 	}
 
 	for (Edge* edge : *m_Edges)
@@ -103,7 +114,13 @@ IGameEntity* Vertex::takeGameObject(eGameEntity entityEnum)
 	}
 	
 	if (result != nullptr)
-		m_GameEntities->erase(m_GameEntities->begin(), m_GameEntities->end());
+	{
+		vector<IGameEntity*>::iterator pos = find(m_GameEntities->begin(), m_GameEntities->end(), result);
+		if (pos != m_GameEntities->end())
+			m_GameEntities->erase(pos);
+	}
+		//m_GameEntities->erase(m_GameEntities->begin(), m_GameEntities->end());
+		//vec.erase(std::remove(vec.begin(), vec.end(), 8), vec.end());
 		//m_GameEntities->erase(std::remove(m_GameEntities->begin(), m_GameEntities->end(), result), m_GameEntities->end());
 
 	return result;

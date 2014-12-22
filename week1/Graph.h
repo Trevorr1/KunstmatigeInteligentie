@@ -25,7 +25,7 @@ namespace Tmpl8
 		//A* stuff
 		std::list<Vertex*> ComputeAStarPath(Vertex* source, Vertex* target);
 		std::list<Vertex*> getPath(eGameEntity source, eGameEntity target);
-		void ShuffleAllExcept(eGameEntity target);
+		void ShuffleHare();
 		void moveGameObject(Vertex* target, eGameEntity entity);
 
 		std::vector<Vertex*>* getVertices();
@@ -49,7 +49,6 @@ namespace Tmpl8
 		//A* stuff
 		std::vector<Vertex*>* m_OpenList;
 		std::vector<Vertex*>* m_ClosedList;
-		std::list<Vertex*> m_Path;
 	};
 }
 
