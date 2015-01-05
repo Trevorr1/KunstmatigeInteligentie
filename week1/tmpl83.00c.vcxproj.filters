@@ -104,8 +104,10 @@
     <ClInclude Include="CowStateFactory.h">
       <Filter>States\Cow</Filter>
     </ClInclude>
-    <ClInclude Include="CowStatePursuit.h" />
     <ClInclude Include="GameLoopWFour.h" />
+    <ClInclude Include="CowStatePursuit.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">
