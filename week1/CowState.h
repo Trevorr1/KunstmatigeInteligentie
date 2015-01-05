@@ -9,7 +9,7 @@ namespace Tmpl8{
 		CowState();
 		virtual ~CowState();
 
-		void Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral) {}
+		void Run(IGameEntity* entity, IGameEntity* other){}
 	};
 }//namespace Tmpl8
 

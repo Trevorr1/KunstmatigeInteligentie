@@ -18,19 +18,6 @@ Cow::Cow()
 	m_Speed = 1.0f;
 }
 
-Cow::Cow(eState state)
-{
-	m_Enum = eGameEntity::eCow;
-	m_Sprite = new Sprite(new Surface("assets/cow-2.png"), 1);
-	m_Surface = DrawManager::getInstance().getScreen();
-
-	m_State = CowStateFactory::getInstance().createState(state);
-
-	m_Position = vector3();
-	m_Heading = vector3();
-	m_Speed = 1.0f;
-}
-
 Cow::Cow(Graph* graph)
 {
 	m_Enum = eGameEntity::eCow;
@@ -44,6 +31,10 @@ Cow::~Cow()
 	delete m_State;
 }
 
+void Cow::Draw()
+{
+	m_Sprite->Draw(m_Position.x, m_Position.y, m_Surface);
+}
 
 void Cow::Update(float dt)
 {
@@ -65,11 +56,9 @@ void Cow::Update(float dt)
 
 void Cow::chase(IGameEntity* entity, float dt)
 {
-	m_State->Run(this, entity, nullptr, nullptr);
+	m_State->Run(this, entity);
 	Draw();
 }
-
-
 
 void Cow::setRoute(eGameEntity source, eGameEntity target)
 {

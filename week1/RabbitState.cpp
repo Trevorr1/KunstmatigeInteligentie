@@ -4,7 +4,6 @@ using namespace Tmpl8;
 
 RabbitState::RabbitState()
 {
-	m_eState = NONE;
 }
 
 

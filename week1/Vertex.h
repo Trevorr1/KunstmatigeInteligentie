@@ -17,7 +17,6 @@ namespace Tmpl8
 		//inherited
 		void Draw();
 		void Update(float dt);
-		void Run(float dt, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral) {}
 		void addGameObject(IGameEntity* obj);
 		void setRoute(eGameEntity source, eGameEntity target) {}
 		//end

@@ -1,6 +1,6 @@
 #pragma once
 
-#define SCRWIDTH	800 // WAS 640
+#define SCRWIDTH	640
 #define SCRHEIGHT	480
 // #define POSTPROCSHADERS
 

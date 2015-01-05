@@ -1,10 +1,8 @@
 #pragma once
-#include "IGameLoop.h"
 #include "Cow.h"
 #include "Rabbit.h"
 namespace Tmpl8 {
-	class GameLoopWFour :
-		public IGameLoop
+	class GameLoopWFour
 	{
 	public:
 		GameLoopWFour();

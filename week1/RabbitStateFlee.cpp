@@ -1,4 +1,3 @@
-#include "IGameEntity.h"
 #include "RabbitStateFlee.h"
 #include "RabbitStateFactory.h"
 #include <iostream>
@@ -8,7 +7,6 @@ using namespace Tmpl8;
 RabbitStateFlee::RabbitStateFlee()
 {
 	std::cout << "The Rabbit says: Oh shit!!!\n\n";
-	m_eState = FLEE;
 }
 
 
@@ -16,19 +14,19 @@ RabbitStateFlee::~RabbitStateFlee()
 {
 }
 
-void RabbitStateFlee::Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral)
+void RabbitStateFlee::Run(IGameEntity* entity, IGameEntity* other)
 {
-	vector3 newHeading = (self->getCenter() - other->getCenter());
-	float distance = newHeading.Length();
-	if (distance > RDANGERRANGE * 4)
+	float distance = (entity->getPosition() - other->getPosition()).Length();
+	if (distance > DANGERRANGE * 4)
 	{
-		self->setState(RabbitStateFactory::getInstance().createWanderState());
+		entity->setState(RabbitStateFactory::getInstance().createWanderState());
 	}
 	else
 	{
+		vector3 newHeading = (entity->getPosition() - other->getPosition());
 		newHeading.Normalize();
 		
-		/*srand(time(nullptr));
+		srand(time(nullptr));
 		
 		int iXMult = 12 - (rand() % 26);
 		int iYMult = 12 - (rand() % 26);
@@ -36,15 +34,31 @@ void RabbitStateFlee::Run(IGameEntity* self, IGameEntity* other, IGameEntity* al
 		iXMult += newHeading.x;
 		iYMult += newHeading.y;
 
-		newHeading.Set(iXMult, iYMult, 0);*/
+		newHeading.Set(iXMult, iYMult, 0);
 
-		ToriodLogic(self);
+		//stay on the screen pls
+		if (entity->getPosition().y + 32 > SCRHEIGHT && newHeading.y > 0) 
+		{
+			newHeading.y *= -1;
+		}
+		if (entity->getPosition().y < 0 && newHeading.y < 0)
+		{
+			newHeading.y *= -1;
+		}
+		if (entity->getPosition().x + 32 > SCRWIDTH && newHeading.x > 0) 
+		{
+			newHeading.x *= -1;
+		}
+		if (entity->getPosition().x < 0 && newHeading.x < 0)
+		{
+			newHeading.x *= -1;
+		}
 
-		//newHeading.Normalize();
+		newHeading.Normalize();
 
-		self->setHeading(newHeading);
-		self->setSpeed(FLEESPEED);
+		entity->setHeading(newHeading);
+		entity->setSpeed(FLEESPEED);
 
-		self->Move(0.0f);
+		entity->Move(0.0f);
 	}
 }

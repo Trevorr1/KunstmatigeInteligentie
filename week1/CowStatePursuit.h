@@ -1,7 +1,7 @@
 #pragma once
 #include "CowState.h"
 
-
+#define PURSUITSPEED 0.3f
 
 namespace Tmpl8{
 	class CowStatePursuit :
@@ -11,7 +11,7 @@ namespace Tmpl8{
 		CowStatePursuit();
 		virtual ~CowStatePursuit();
 
-		void Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral);
+		void Run(IGameEntity* entity, IGameEntity* other);
 	};
 }
 

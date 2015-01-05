@@ -11,8 +11,6 @@ GameLoopWFour::GameLoopWFour()
 
 GameLoopWFour::~GameLoopWFour()
 {
-	delete m_Cow;
-	delete m_Rabbit;
 }
 
 void GameLoopWFour::Tick(float dt)

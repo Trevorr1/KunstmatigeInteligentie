@@ -1,6 +1,7 @@
 #pragma once
 #include "RabbitState.h"
 
+#define WANDERSPEED 0.1f
 
 namespace Tmpl8{
 	class RabbitStateWander :
@@ -10,7 +11,7 @@ namespace Tmpl8{
 		RabbitStateWander();
 		virtual ~RabbitStateWander();
 
-		void Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral);
+		void Run(IGameEntity* entity, IGameEntity* other);
 	};
 }//namespace Tmpl8
 
