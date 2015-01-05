@@ -1,15 +1,13 @@
 #pragma once
-#include "CowState.h"
-
-
-
+#include "RabbitState.h"
 namespace Tmpl8{
-	class CowStatePursuit :
-		public CowState
+
+	class RabbitStatePursuit :
+		public RabbitState
 	{
 	public:
-		CowStatePursuit();
-		virtual ~CowStatePursuit();
+		RabbitStatePursuit();
+		virtual ~RabbitStatePursuit();
 
 		void Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral);
 	};

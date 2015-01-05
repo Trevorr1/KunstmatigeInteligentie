@@ -7,6 +7,7 @@
 #include "DrawManager.h"
 #include "Graph.h"
 #include "GameLoopWFour.h"
+#include "GameLoopWFive.h"
 #include <vector>
 
 using namespace Tmpl8;
@@ -24,7 +25,8 @@ Game::~Game()
 void Game::Init()
 {
 	DrawManager::getInstance().setTargetSurface(m_Screen);
-	m_GLF = new GameLoopWFour();
+	//m_GLF = new GameLoopWFour();
+	m_GLV = new GameLoopWFive();
 	//m_Graph = new Graph(m_Screen);
 	//m_Graph->init();
 }
@@ -32,7 +34,8 @@ void Game::Init()
 void Game::Tick( float a_DT )
 {
 	m_Screen->Clear(0xffffff);
-	m_GLF->Tick(a_DT);
+	//m_GLF->Tick(a_DT);
+	m_GLV->Tick(a_DT);
 }
 
 void Game::KeyDown(unsigned int code)

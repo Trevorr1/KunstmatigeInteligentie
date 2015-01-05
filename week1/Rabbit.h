@@ -14,10 +14,10 @@ namespace Tmpl8
 	{
 	public:
 		Rabbit();
+		Rabbit(eState state);
 		Rabbit(Graph* graph);
 		virtual ~Rabbit();
 
-		void Draw();
 		void Update(float dt);
 		void Lookout(IGameEntity* entity, float dt);
 		void setRoute(eGameEntity source, eGameEntity target);
