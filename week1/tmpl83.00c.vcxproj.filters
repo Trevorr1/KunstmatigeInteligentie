@@ -49,63 +49,7 @@
     <ClCompile Include="CowStatePursuit.cpp">
       <Filter>States\Cow</Filter>
     </ClCompile>
-    <ClCompile Include="CowStateFlee.cpp">
-      <Filter>States\Cow</Filter>
-    </ClCompile>
-    <ClCompile Include="CowStateFleeGun.cpp">
-      <Filter>States\Cow</Filter>
-    </ClCompile>
-    <ClCompile Include="CowStateFleePill.cpp">
-      <Filter>States\Cow</Filter>
-    </ClCompile>
-    <ClCompile Include="CowStateHide.cpp">
-      <Filter>States\Cow</Filter>
-    </ClCompile>
-    <ClCompile Include="CowStateIdle.cpp">
-      <Filter>States\Cow</Filter>
-    </ClCompile>
-    <ClCompile Include="CowStateInvulnerable.cpp">
-      <Filter>States\Cow</Filter>
-    </ClCompile>
-    <ClCompile Include="CowStateWander.cpp">
-      <Filter>States\Cow</Filter>
-    </ClCompile>
-    <ClCompile Include="RabbitStatePursuit.cpp">
-      <Filter>States\Rabbit</Filter>
-    </ClCompile>
-    <ClCompile Include="Pill.cpp">
-      <Filter>States\Pill</Filter>
-    </ClCompile>
-    <ClCompile Include="PillState.cpp">
-      <Filter>States\Pill</Filter>
-    </ClCompile>
-    <ClCompile Include="PillStateFactory.cpp">
-      <Filter>States\Pill</Filter>
-    </ClCompile>
-    <ClCompile Include="PillStateIdle.cpp">
-      <Filter>States\Pill</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>States\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponState.cpp">
-      <Filter>States\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponStateFactory.cpp">
-      <Filter>States\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponStateIdle.cpp">
-      <Filter>States\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoopWFive.cpp">
-      <Filter>Gameloops\WeekFive</Filter>
-    </ClCompile>
-    <ClCompile Include="GameRound.cpp">
-      <Filter>Gameloops\WeekFive</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoopWFour.cpp">
-      <Filter>Gameloops\WeekFour</Filter>
-    </ClCompile>
+    <ClCompile Include="GameLoopWFour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -160,72 +104,8 @@
     <ClInclude Include="CowStateFactory.h">
       <Filter>States\Cow</Filter>
     </ClInclude>
-    <ClInclude Include="CowStatePursuit.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="CowStateFlee.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="CowStateFleeGun.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="CowStateFleePill.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="CowStateHide.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="CowStateIdle.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="CowStateInvulnerable.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="CowStateWander.h">
-      <Filter>States\Cow</Filter>
-    </ClInclude>
-    <ClInclude Include="RabbitStatePursuit.h">
-      <Filter>States\Rabbit</Filter>
-    </ClInclude>
-    <ClInclude Include="Pill.h">
-      <Filter>States\Pill</Filter>
-    </ClInclude>
-    <ClInclude Include="PillState.h">
-      <Filter>States\Pill</Filter>
-    </ClInclude>
-    <ClInclude Include="PillStateFactory.h">
-      <Filter>States\Pill</Filter>
-    </ClInclude>
-    <ClInclude Include="PillStateIdle.h">
-      <Filter>States\Pill</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>States\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponState.h">
-      <Filter>States\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponStateFactory.h">
-      <Filter>States\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponStateIdle.h">
-      <Filter>States\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="eEntityState.h">
-      <Filter>States</Filter>
-    </ClInclude>
-    <ClInclude Include="IGameLoop.h">
-      <Filter>Gameloops</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoopWFive.h">
-      <Filter>Gameloops\WeekFive</Filter>
-    </ClInclude>
-    <ClInclude Include="GameRound.h">
-      <Filter>Gameloops\WeekFive</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoopWFour.h">
-      <Filter>Gameloops\WeekFour</Filter>
-    </ClInclude>
+    <ClInclude Include="CowStatePursuit.h" />
+    <ClInclude Include="GameLoopWFour.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">
@@ -239,21 +119,6 @@
     </Filter>
     <Filter Include="States\Cow">
       <UniqueIdentifier>{a8692484-f372-4ffa-a9a6-c6623605c918}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="States\Pill">
-      <UniqueIdentifier>{0c631119-33a7-4c48-9950-863d7d8f03a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="States\Weapon">
-      <UniqueIdentifier>{57513847-9375-4c3e-a26d-6d7a4505d4d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Gameloops">
-      <UniqueIdentifier>{432f54d9-6e99-4642-8863-ed8d05c6709f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Gameloops\WeekFour">
-      <UniqueIdentifier>{0b0882fe-e1b3-47e4-a885-8764d621d5c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Gameloops\WeekFive">
-      <UniqueIdentifier>{8e794d31-e5ca-450b-b16b-76baa0619aa8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
