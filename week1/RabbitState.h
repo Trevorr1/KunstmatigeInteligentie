@@ -1,6 +1,5 @@
 #pragma once
 #include "EntityState.h"
-#include <time.h>
 
 namespace Tmpl8{
 	class RabbitState :

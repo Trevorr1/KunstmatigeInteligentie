@@ -19,7 +19,7 @@ namespace Tmpl8
 
 		void Draw();
 		void Update(float dt);
-		void Lookout(IGameEntity* entity, float dt);
+		void Lookout(Cow* cow, float dt);
 		void setRoute(eGameEntity source, eGameEntity target);
 		void entityMovedNotification(eGameEntity entity);
 

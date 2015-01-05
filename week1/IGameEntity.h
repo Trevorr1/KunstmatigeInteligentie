@@ -3,8 +3,6 @@
 #include "template.h"
 #include "eGameEntity.h"
 #include "surface.h"
-#include "DrawManager.h"
-#include <iomanip> 
 #include <list>
 
 namespace Tmpl8
@@ -27,15 +25,7 @@ namespace Tmpl8
 		vector3 getPosition() { return m_Position; }
 		void setPosition(int x, int y){ m_Position.x = x, m_Position.y = y; }
 		void setPosition(vector3 vec){ m_Position = vec; }
-		void setState(EntityState* state) { delete m_State; m_State = state; }
-
-		void setHeading(vector3 heading) { m_Heading.Set(heading.x, heading.y, heading.z); }
-		vector3 getHeading() { return m_Heading; }
-
-		void setSpeed(float speed) { m_Speed = speed; }
-		float getSpeed() { return m_Speed; }
-
-		void Move(float dt) { m_Position += m_Heading * m_Speed; }
+		void setState(EntityState* state) { m_State = state; }
 
 		virtual void entityMovedNotification(eGameEntity entity) {};
 	protected:
@@ -43,7 +33,6 @@ namespace Tmpl8
 		std::list<Vertex*> m_Path;
 		Graph* m_Graph;
 		Sprite* m_Sprite;
-		Surface* m_Surface;
 		vector3 m_Position;
 		vector3 m_Heading;
 		float m_Speed;

@@ -1,5 +1,5 @@
 #pragma once
-#define DANGERRANGE 60
+#define DANGERRANGE 30
 #include "IGameEntity.h"
 namespace Tmpl8 {
 	class EntityState

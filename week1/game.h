@@ -7,7 +7,6 @@ namespace Tmpl8 {
 	class Graph;
 	class NavGravNode;
 	class GraphEdge;
-	class GameLoopWFour;
 	class Game
 	{
 	public:
@@ -23,6 +22,5 @@ namespace Tmpl8 {
 	private:
 		Surface* m_Screen;
 		Graph* m_Graph;
-		GameLoopWFour* m_GLF;
 	};
 }; // namespace Tmpl8
