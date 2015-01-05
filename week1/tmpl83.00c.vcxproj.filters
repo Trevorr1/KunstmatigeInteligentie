@@ -13,12 +13,6 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
-    <ClCompile Include="Cow.cpp">
-      <Filter>Graph</Filter>
-    </ClCompile>
-    <ClCompile Include="Rabbit.cpp">
-      <Filter>Graph</Filter>
-    </ClCompile>
     <ClCompile Include="DrawManager.cpp">
       <Filter>Graph</Filter>
     </ClCompile>
@@ -49,7 +43,69 @@
     <ClCompile Include="CowStatePursuit.cpp">
       <Filter>States\Cow</Filter>
     </ClCompile>
-    <ClCompile Include="GameLoopWFour.cpp" />
+    <ClCompile Include="GameLoopWFour.cpp">
+      <Filter>GameLoops</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateFlee.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateHide.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateFleePill.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateFleeGun.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoopWFive.cpp">
+      <Filter>GameLoops\WeekFive</Filter>
+    </ClCompile>
+    <ClCompile Include="Cow.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Rabbit.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitStatePursuit.cpp">
+      <Filter>States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateWander.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponStateFactory.cpp">
+      <Filter>States\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="PillStateFactory.cpp">
+      <Filter>States\Pill</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponState.cpp">
+      <Filter>States\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="PillState.cpp">
+      <Filter>States\Pill</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponStateIdle.cpp">
+      <Filter>States\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="PillStateIdle.cpp">
+      <Filter>States\Pill</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateInvulnerable.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRound.cpp">
+      <Filter>GameLoops\WeekFive</Filter>
+    </ClCompile>
+    <ClCompile Include="Pill.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CowStateIdle.cpp">
+      <Filter>States\Cow</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -65,18 +121,6 @@
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="game.h" />
-    <ClInclude Include="eGameEntity.h">
-      <Filter>Graph</Filter>
-    </ClInclude>
-    <ClInclude Include="IGameEntity.h">
-      <Filter>Graph</Filter>
-    </ClInclude>
-    <ClInclude Include="Cow.h">
-      <Filter>Graph</Filter>
-    </ClInclude>
-    <ClInclude Include="Rabbit.h">
-      <Filter>Graph</Filter>
-    </ClInclude>
     <ClInclude Include="DrawManager.h">
       <Filter>Graph</Filter>
     </ClInclude>
@@ -104,8 +148,82 @@
     <ClInclude Include="CowStateFactory.h">
       <Filter>States\Cow</Filter>
     </ClInclude>
-    <ClInclude Include="GameLoopWFour.h" />
+    <ClInclude Include="GameLoopWFour.h">
+      <Filter>GameLoops</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameLoop.h">
+      <Filter>GameLoops</Filter>
+    </ClInclude>
     <ClInclude Include="CowStatePursuit.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateFlee.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateHide.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateFleePill.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateFleeGun.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoopWFive.h">
+      <Filter>GameLoops\WeekFive</Filter>
+    </ClInclude>
+    <ClInclude Include="Cow.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Rabbit.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="eGameEntity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameEntity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitStatePursuit.h">
+      <Filter>States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateWander.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponStateFactory.h">
+      <Filter>States\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="PillStateFactory.h">
+      <Filter>States\Pill</Filter>
+    </ClInclude>
+    <ClInclude Include="Pill.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="PillState.h">
+      <Filter>States\Pill</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponState.h">
+      <Filter>States\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponStateIdle.h">
+      <Filter>States\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="PillStateIdle.h">
+      <Filter>States\Pill</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateInvulnerable.h">
+      <Filter>States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRound.h">
+      <Filter>GameLoops\WeekFive</Filter>
+    </ClInclude>
+    <ClInclude Include="eEntityState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="CowStateIdle.h">
       <Filter>States\Cow</Filter>
     </ClInclude>
   </ItemGroup>
@@ -121,6 +239,21 @@
     </Filter>
     <Filter Include="States\Cow">
       <UniqueIdentifier>{a8692484-f372-4ffa-a9a6-c6623605c918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLoops">
+      <UniqueIdentifier>{07e0e7aa-abdb-44ce-8cb9-3e66682ee191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLoops\WeekFive">
+      <UniqueIdentifier>{77b93294-e95c-49cb-8937-fb888339abd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{e94e4c17-c69c-452b-a07a-b72ed77a79de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Pill">
+      <UniqueIdentifier>{27812c3f-00c2-42b7-acf2-8395bce3b786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Weapon">
+      <UniqueIdentifier>{1135fc9c-c29a-496b-9dc6-ba5be19a1e3c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

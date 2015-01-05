@@ -1,13 +1,14 @@
 #pragma once
-#include "EntityState.h"
+#include "CowState.h"
 
-namespace Tmpl8{
-	class CowState :
-		public EntityState
+namespace Tmpl8
+{
+	class CowStateIdle :
+		public CowState
 	{
 	public:
-		CowState();
-		virtual ~CowState();
+		CowStateIdle();
+		virtual ~CowStateIdle();
 
 		void Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral) {}
 	};

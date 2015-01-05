@@ -19,6 +19,19 @@ Rabbit::Rabbit()
 	m_Speed = 1.0f;
 }
 
+Rabbit::Rabbit(eState state)
+{
+	m_Enum = eGameEntity::eRabbit;
+	m_Sprite = new Sprite(new Surface("assets/rabbit-3.png"), 1);
+	m_Surface = DrawManager::getInstance().getScreen();
+
+	m_State = RabbitStateFactory::getInstance().createState(state);
+
+	m_Position = vector3(SCRWIDTH / 2.0f, SCRHEIGHT / 2.0f, 0);
+	m_Heading = vector3();
+	m_Speed = 1.0f;
+}
+
 Rabbit::Rabbit(Graph* graph)
 {
 	m_Enum = eGameEntity::eRabbit;
@@ -30,11 +43,6 @@ Rabbit::~Rabbit()
 {
 	delete m_Sprite;
 	delete m_State;
-}
-
-void Rabbit::Draw()
-{
-	m_Sprite->Draw(m_Position.x, m_Position.y, m_Surface);
 }
 
 void Rabbit::Update(float dt)
@@ -55,7 +63,7 @@ void Rabbit::Update(float dt)
 
 void Rabbit::Lookout(IGameEntity* entity, float dt)
 {
-	m_State->Run(this, entity);
+	m_State->Run(this, entity, nullptr, nullptr);
 	Draw();
 }
 
