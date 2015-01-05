@@ -10,7 +10,26 @@ Rabbit::Rabbit()
 {
 	m_Enum = eGameEntity::eRabbit;
 	m_Sprite = new Sprite(new Surface("assets/rabbit-3.png"), 1);
+	m_Surface = DrawManager::getInstance().getScreen();
+
 	m_State = RabbitStateFactory::getInstance().createWanderState();
+
+	m_Position = vector3(SCRWIDTH/2.0f,SCRHEIGHT/2.0f,0);
+	m_Heading = vector3();
+	m_Speed = 1.0f;
+}
+
+Rabbit::Rabbit(eState state)
+{
+	m_Enum = eGameEntity::eRabbit;
+	m_Sprite = new Sprite(new Surface("assets/rabbit-3.png"), 1);
+	m_Surface = DrawManager::getInstance().getScreen();
+
+	m_State = RabbitStateFactory::getInstance().createState(state);
+
+	m_Position = vector3(SCRWIDTH / 2.0f, SCRHEIGHT / 2.0f, 0);
+	m_Heading = vector3();
+	m_Speed = 1.0f;
 }
 
 Rabbit::Rabbit(Graph* graph)
@@ -26,11 +45,6 @@ Rabbit::~Rabbit()
 	delete m_State;
 }
 
-void Rabbit::Draw()
-{
-	m_Sprite->Draw(m_Position.x, m_Position.y, m_Graph->getSurface());
-}
-
 void Rabbit::Update(float dt)
 {
 	/*if (m_Path.size() > 1){
@@ -44,12 +58,13 @@ void Rabbit::Update(float dt)
 		m_Path.pop_front();
 		m_Graph->moveGameObject(target, eRabbit);
 	}*/
+
 }
 
-void Rabbit::Lookout(Cow* cow, float dt)
+void Rabbit::Lookout(IGameEntity* entity, float dt)
 {
-	m_State->Run(this, cow);
-	Update(dt);
+	m_State->Run(this, entity, nullptr, nullptr);
+	Draw();
 }
 
 void Rabbit::setRoute(eGameEntity source, eGameEntity target)

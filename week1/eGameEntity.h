@@ -1,5 +1,5 @@
 #pragma once
 enum eGameEntity 
 {
-	eCow, eRabbit
+	eCow, eRabbit, ePill, eGun
 };

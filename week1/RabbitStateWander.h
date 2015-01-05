@@ -1,6 +1,7 @@
 #pragma once
 #include "RabbitState.h"
 
+
 namespace Tmpl8{
 	class RabbitStateWander :
 		public RabbitState
@@ -9,7 +10,7 @@ namespace Tmpl8{
 		RabbitStateWander();
 		virtual ~RabbitStateWander();
 
-		void Run(IGameEntity* entity, IGameEntity* other);
+		void Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral);
 	};
 }//namespace Tmpl8
 

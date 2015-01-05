@@ -1,3 +1,4 @@
+#include "IGameEntity.h"
 #include "RabbitStateWander.h"
 #include "RabbitStateFactory.h" 
 #include <iostream>
@@ -7,6 +8,8 @@ using namespace Tmpl8;
 RabbitStateWander::RabbitStateWander()
 {
 	std::cout << "The Rabbit says: I am chilling.\n\n";
+	m_eState = WANDER;
+	srand(time(NULL));
 }
 
 
@@ -15,45 +18,28 @@ RabbitStateWander::~RabbitStateWander()
 }
 
 
-void RabbitStateWander::Run(IGameEntity* entity, IGameEntity* other)
+void RabbitStateWander::Run(IGameEntity* self, IGameEntity* other, IGameEntity* ally, IGameEntity* neutral)
 {
-	float distance = (entity->getPosition() - other->getPosition()).Length();
-	if (distance < DANGERRANGE)
+	float distance = (self->getCenter() - other->getCenter()).Length();
+	if (distance < RDANGERRANGE)
 	{
-		entity->setState(RabbitStateFactory::getInstance().createFleeState());
+		self->setState(RabbitStateFactory::getInstance().createFleeState());
 	}
 	else
 	{
-		srand(time(nullptr));
 
 		int iX = 13 - (rand() % 25);
 		int iY = 13 - (rand() % 25);
 
 		vector3 newHeading = vector3((float)iX, (float)iY, 0);
 
-		//stay on the screen pls
-		if (entity->getPosition().y + 32> SCRHEIGHT && newHeading.y > 0)
-		{
-			newHeading.y *= -1;
-		}
-		if (entity->getPosition().y < 0 && newHeading.y < 0)
-		{
-			newHeading.y *= -1;
-		}
-		if (entity->getPosition().x + 32> SCRWIDTH && newHeading.x > 0)
-		{
-			newHeading.x *= -1;
-		}
-		if (entity->getPosition().x < 0 && newHeading.x < 0)
-		{
-			newHeading.x *= -1;
-		}
+		ToriodLogic(self);
 
 		newHeading.Normalize();
 
-		entity->setHeading(newHeading);
-		entity->setSpeed(WANDERSPEED);
+		self->setHeading(newHeading);
+		self->setSpeed(WANDERSPEED);
 
-		entity->Move(0.0f);
+		self->Move(0.0f);
 	}
 }
