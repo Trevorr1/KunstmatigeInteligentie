@@ -4,12 +4,14 @@
 #include "eGameEntity.h"
 #include "surface.h"
 #include <list>
+#include "IFSM.h"
 
 namespace Tmpl8
 {
 	class Graph;
 	class Vertex;
 	class Surface;
+	class IFSM;
 	class IGameEntity
 	{
 	public:
@@ -19,6 +21,12 @@ namespace Tmpl8
 		virtual void Update(float dt) = 0;
 		virtual void setRoute(eGameEntity source, eGameEntity target) = 0;
 		virtual ~IGameEntity() {};
+
+		IFSM* m_CurrentState;
+
+		virtual void SetState(IFSM* state) { delete m_CurrentState;  m_CurrentState = state; }
+		virtual IFSM* GetState() { return m_CurrentState; }
+		virtual void ResetState(){};
 
 		std::list<Vertex*> getPath() { return m_Path; }
 		Graph* getGraph() { return m_Graph; }

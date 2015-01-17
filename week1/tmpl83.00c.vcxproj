@@ -114,24 +114,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cow.cpp" />
+    <ClCompile Include="CowPursuitState.cpp" />
+    <ClCompile Include="CowWanderState.cpp" />
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="RabbitWanderState.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cow.h" />
+    <ClInclude Include="CowPursuitState.h" />
+    <ClInclude Include="CowWanderState.h" />
     <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="eGameEntity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="IFSMCow.h" />
+    <ClInclude Include="IFSMRabbit.h" />
     <ClInclude Include="IGameEntity.h" />
+    <ClInclude Include="IFSM.h" />
     <ClInclude Include="Rabbit.h" />
+    <ClInclude Include="RabbitWanderState.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />

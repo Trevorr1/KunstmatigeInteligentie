@@ -1,6 +1,7 @@
 #include "Cow.h"
 #include "Graph.h"
 #include "surface.h"
+#include "CowWanderState.h"
 
 using namespace Tmpl8;
 
@@ -9,6 +10,7 @@ Cow::Cow(Graph* graph)
 	m_Enum = eGameEntity::eCow;
 	m_Graph = graph;
 	m_Sprite = new Sprite(new Surface("assets/cow-2.png"), 1);
+	m_CurrentState = new CowWanderState(m_Graph);
 }
 
 Cow::~Cow()
@@ -18,12 +20,18 @@ Cow::~Cow()
 
 void Cow::Draw()
 {
-	m_Sprite->Draw(m_Position.x, m_Position.y, m_Graph->getSurface());
+	if (m_CurrentState->getState() == 1)
+		m_Sprite->DrawScaled(m_Position.x, m_Position.y, 24, 24, m_Graph->getSurface());
+	else
+		m_Sprite->Draw(m_Position.x, m_Position.y, m_Graph->getSurface());
+	
 }
 
 void Cow::Update(float dt)
 {
-	if (m_Path.size() > 1)
+	m_CurrentState->execute();
+	//Debug statements to check path size.
+	/*if (m_Path.size() > 1)
 	{
 		Vertex* target = m_Path.front();
 		m_Path.pop_front();
@@ -34,8 +42,7 @@ void Cow::Update(float dt)
 		Vertex* target = m_Path.front();
 		m_Path.pop_front();
 		m_Graph->moveGameObject(target, eCow);
-	}
-		//state here?
+	}*/
 }
 
 void Cow::setRoute(eGameEntity source, eGameEntity target)
@@ -45,5 +52,10 @@ void Cow::setRoute(eGameEntity source, eGameEntity target)
 
 void Cow::entityMovedNotification(eGameEntity entity)
 {
-	//state here
+	
+}
+
+void Cow::ResetState()
+{
+	SetState(new CowWanderState(m_Graph));
 }

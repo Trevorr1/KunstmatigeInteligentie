@@ -19,6 +19,8 @@ namespace Tmpl8
 		void setRoute(eGameEntity source, eGameEntity target);
 		void entityMovedNotification(eGameEntity entity);
 
+		void ResetState();
+
 	private:
 	};
 } //tmpl8

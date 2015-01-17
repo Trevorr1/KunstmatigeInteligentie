@@ -22,6 +22,15 @@
     <ClCompile Include="DrawManager.cpp">
       <Filter>Graph</Filter>
     </ClCompile>
+    <ClCompile Include="CowPursuitState.cpp">
+      <Filter>Graph\State</Filter>
+    </ClCompile>
+    <ClCompile Include="CowWanderState.cpp">
+      <Filter>Graph\State</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitWanderState.cpp">
+      <Filter>Graph\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vertex.h">
@@ -52,10 +61,31 @@
     <ClInclude Include="DrawManager.h">
       <Filter>Graph</Filter>
     </ClInclude>
+    <ClInclude Include="CowPursuitState.h">
+      <Filter>Graph\State</Filter>
+    </ClInclude>
+    <ClInclude Include="CowWanderState.h">
+      <Filter>Graph\State</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitWanderState.h">
+      <Filter>Graph\State</Filter>
+    </ClInclude>
+    <ClInclude Include="IFSM.h">
+      <Filter>Graph\State</Filter>
+    </ClInclude>
+    <ClInclude Include="IFSMRabbit.h">
+      <Filter>Graph\State</Filter>
+    </ClInclude>
+    <ClInclude Include="IFSMCow.h">
+      <Filter>Graph\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graph">
       <UniqueIdentifier>{674ff30b-376d-45c8-9cee-6d33be32b2c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graph\State">
+      <UniqueIdentifier>{bd5bedde-ff4d-463b-85f8-84ad8a8eb0e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

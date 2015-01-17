@@ -43,9 +43,6 @@ Graph::~Graph()
 	m_ClosedList->erase(m_ClosedList->begin(), m_ClosedList->end());
 	delete m_ClosedList;
 
-	//m_Path->erase(m_Path->begin(), m_Path->end());
-	//delete m_Path;
-
 	delete m_Cow;
 	delete m_Rabbit;
 }
@@ -100,7 +97,7 @@ void Graph::init()
 	m_OpenList = new vector<Vertex*>();
 	m_ClosedList = new vector<Vertex*>();
 
-	m_LookUpBook.at(eCow)->getGameObject(eCow)->setRoute(eCow, eRabbit);
+	//m_LookUpBook.at(eCow)->getGameObject(eCow)->setRoute(eCow, eRabbit);
 }
 
 void Graph::Draw(Surface* target)
@@ -113,11 +110,11 @@ void Graph::Draw(Surface* target)
 
 void Graph::Update(float dt)
 {
-	if (m_LookUpBook.at(eCow)->getGameObject(eCow)->getPath().size() ==  0)
+	/*if (m_LookUpBook.at(eCow)->getGameObject(eCow)->getPath().size() ==  0)
 	{
 		ShuffleHare();
 		m_LookUpBook.at(eCow)->getGameObject(eCow)->setRoute(eCow, eRabbit);
-	}
+	}*/
 
 	m_LookUpBook.at(eCow)->getGameObject(eCow)->Update(dt);
 
