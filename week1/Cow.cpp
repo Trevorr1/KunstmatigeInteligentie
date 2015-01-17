@@ -21,7 +21,7 @@ Cow::~Cow()
 void Cow::Draw()
 {
 	if (m_CurrentState->getState() == 1)
-		m_Sprite->DrawScaled(m_Position.x, m_Position.y, 24, 24, m_Graph->getSurface());
+		m_Sprite->DrawScaled(m_Position.x, m_Position.y, 16, 16, m_Graph->getSurface());
 	else
 		m_Sprite->Draw(m_Position.x, m_Position.y, m_Graph->getSurface());
 	

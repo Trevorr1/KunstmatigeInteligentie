@@ -18,15 +18,21 @@ CowPursuitState::~CowPursuitState()
 
 void CowPursuitState::execute()
 {
-	if (m_Path.size() == 0)
+	if (m_Path.size() == 0 && m_FirstRun)
 	{
 		m_Path = m_Graph->getPath(eCow, eRabbit);
+		m_FirstRun = false;
 	}
 	else if (m_Path.size() > 0)
 	{
 		Vertex* target = m_Path.front();
 		m_Path.pop_front();
 		m_Graph->moveGameObject(target, eCow);
+	}
+	else if (m_Path.size() == 0 && m_FirstRun == false)
+	{
+		m_Graph->ShuffleHare();
+		m_Entity->ResetState();
 	}
 
 	printf("Cow is in pursuit state!\n");
