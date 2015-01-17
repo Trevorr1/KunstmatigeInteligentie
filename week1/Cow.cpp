@@ -10,7 +10,7 @@ Cow::Cow(Graph* graph)
 	m_Enum = eGameEntity::eCow;
 	m_Graph = graph;
 	m_Sprite = new Sprite(new Surface("assets/cow-2.png"), 1);
-	m_CurrentState = new CowWanderState(m_Graph);
+	m_CurrentState = new CowWanderState(m_Graph, this);
 }
 
 Cow::~Cow()
@@ -57,5 +57,5 @@ void Cow::entityMovedNotification(eGameEntity entity)
 
 void Cow::ResetState()
 {
-	SetState(new CowWanderState(m_Graph));
+	SetState(new CowWanderState(m_Graph, this));
 }

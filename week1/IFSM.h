@@ -13,8 +13,10 @@ namespace Tmpl8
 
 		virtual void execute() {};
 		virtual int getState() { return 0; };
+		virtual bool isDone() { return false; }
 	protected:
 		int m_StateID;
+		bool m_Done;
 	};
 
 } //namespace
